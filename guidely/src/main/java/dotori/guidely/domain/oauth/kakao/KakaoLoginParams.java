@@ -2,6 +2,7 @@ package dotori.guidely.domain.oauth.kakao;
 
 import dotori.guidely.domain.oauth.OAuthLoginParams;
 import dotori.guidely.domain.oauth.OAuthProvider;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.util.LinkedMultiValueMap;
@@ -9,6 +10,7 @@ import org.springframework.util.MultiValueMap;
 
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 public class KakaoLoginParams implements OAuthLoginParams {
     private String authorizationCode;
 
