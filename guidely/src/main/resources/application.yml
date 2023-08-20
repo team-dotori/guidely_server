@@ -30,3 +30,13 @@ springdoc:
       enabled: true
   cache:
     disabled: true
+
+jwt:
+  secret-key: Z29nby10bS1zZXJ2ZXItZGxyamVvYW9yb3JodG9kZ290c3Atam9vbmdhbmduaW0teWVvbHNpbWhpaGFsZ2VveW8K
+
+oauth:
+  kakao:
+    client-id: 503034a4f3a8608c6f52ddcb9a2f6bb5
+    url:
+      auth: https://kauth.kakao.com
+      api: https://kapi.kakao.com
