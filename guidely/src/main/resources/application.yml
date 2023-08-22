@@ -1,42 +1,4 @@
 spring:
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
-
-  datasource:
-    url: jdbc:h2:~/guidely
-    driver-class-name: org.h2.Driver
-    username: sa
-    password:
-
-  jpa:
-    show-sql: true
-    hibernate:
-      ddl-auto: create-drop
-
-# Swagger springdoc-ui Configuration
-springdoc:
-  packages-to-scan: dotori.guidely
-  default-consumes-media-type: application/json;charset=UTF-8
-  default-produces-media-type: application/json;charset=UTF-8
-  swagger-ui:
-    path: /swagger-ui.html
-    tags-sorter: alpha            # alpha: 알파벳 순 태그 정렬, method: HTTP Method 순 정렬
-    operations-sorter: alpha      # alpha: 알파벳 순 태그 정렬, method: HTTP Method 순 정렬
-  api-docs:
-    path: /api-docs/json
-    groups:
-      enabled: true
-  cache:
-    disabled: true
-
-jwt:
-  secret-key: Z29nby10bS1zZXJ2ZXItZGxyamVvYW9yb3JodG9kZ290c3Atam9vbmdhbmduaW0teWVvbHNpbWhpaGFsZ2VveW8K
-
-oauth:
-  kakao:
-    client-id: e219a1b9069ccc50a2ba84ef00d09204
-    url:
-      auth: https://kauth.kakao.com
-      api: https://kapi.kakao.com
+  profiles:
+    include:
+      - secret
