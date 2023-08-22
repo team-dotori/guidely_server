@@ -1,9 +1,11 @@
-package dotori.guidely.domain.oauth.kakao;
+package dotori.guidely.domain.oauth.domain;
 
+import dotori.guidely.domain.oauth.dto.response.KakaoInfoResponseDto;
+import dotori.guidely.domain.oauth.dto.response.KakaoTokenResponseDto;
 import dotori.guidely.domain.oauth.OAuthApiClient;
-import dotori.guidely.domain.oauth.OAuthInfoResponse;
+import dotori.guidely.domain.oauth.domain.OAuthInfoResponse;
 import dotori.guidely.domain.oauth.OAuthLoginParams;
-import dotori.guidely.domain.oauth.OAuthProvider;
+import dotori.guidely.domain.oauth.domain.OAuthProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -29,6 +31,9 @@ public class KakaoApiClient implements OAuthApiClient {
     @Value("${oauth.kakao.client-id}")
     private String clientId;
 
+    @Value("${oauth.kakao.url.redirect}")
+    private String redirectUrl;
+
     private final RestTemplate restTemplate;
 
     @Override
@@ -46,10 +51,13 @@ public class KakaoApiClient implements OAuthApiClient {
         MultiValueMap<String, String> body = params.makeBody();
         body.add("grant_type", GRANT_TYPE);
         body.add("client_id", clientId);
+        body.add("redirect_uri", redirectUrl);
+
+        System.out.println("body = " + body);
 
         HttpEntity<?> request = new HttpEntity<>(body, httpHeaders);
 
-        KakaoTokens response = restTemplate.postForObject(url, request, KakaoTokens.class);
+        KakaoTokenResponseDto response = restTemplate.postForObject(url, request, KakaoTokenResponseDto.class);
 
         assert response != null;
         return response.getAccessToken();
@@ -68,6 +76,6 @@ public class KakaoApiClient implements OAuthApiClient {
 
         HttpEntity<?> request = new HttpEntity<>(body, httpHeaders);
 
-        return restTemplate.postForObject(url, request, KakaoInfoResponse.class);
+        return restTemplate.postForObject(url, request, KakaoInfoResponseDto.class);
     }
 }
