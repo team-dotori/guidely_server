@@ -1,18 +1,15 @@
-package dotori.guidely.domain.user;
+package dotori.guidely.domain.user.domain;
 
-import dotori.guidely.domain.oauth.OAuthProvider;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import dotori.guidely.domain.oauth.domain.OAuthProvider;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Data
 @Entity
+@Getter
 @Table(name = "users")
 @AllArgsConstructor
 @NoArgsConstructor
@@ -26,9 +23,6 @@ public class User {
     private String email;
 
     @Column
-    private String name;
-
-    @Column
     private String nickname;
 
     @CreatedDate
@@ -36,15 +30,15 @@ public class User {
     private LocalDateTime createdDate;
 
     @Enumerated(EnumType.STRING)
-    private UserType type;
+    private UserType type = UserType.NEW;
 
+    @Enumerated(EnumType.STRING)
     private OAuthProvider oAuthProvider;
 
     @Builder
-    public User(String email, String nickname, UserType type, OAuthProvider oAuthProvider) {
+    public User(String email, String nickname, OAuthProvider oAuthProvider) {
         this.email = email;
         this.nickname = nickname;
-        this.type = type;
         this.oAuthProvider = oAuthProvider;
     }
 }
