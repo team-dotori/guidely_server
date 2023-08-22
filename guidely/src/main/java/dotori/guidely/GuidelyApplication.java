@@ -13,15 +13,4 @@ public class GuidelyApplication {
 		SpringApplication.run(GuidelyApplication.class, args);
 	}
 
-	@Bean
-	public WebMvcConfigurer corsConfigurer() {
-		return new WebMvcConfigurer() {
-			@Override
-			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**")
-						.allowedOrigins("http://172.30.1.67");
-			}
-		};
-	}
-
 }
