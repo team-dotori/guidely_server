@@ -1,14 +1,14 @@
-package dotori.guidely.domain.oauth.kakao;
+package dotori.guidely.domain.oauth.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import dotori.guidely.domain.oauth.OAuthInfoResponse;
-import dotori.guidely.domain.oauth.OAuthProvider;
+import dotori.guidely.domain.oauth.domain.OAuthInfoResponse;
+import dotori.guidely.domain.oauth.domain.OAuthProvider;
 import lombok.Getter;
 
 @Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class KakaoInfoResponse implements OAuthInfoResponse {
+public class KakaoInfoResponseDto implements OAuthInfoResponse {
 
     @JsonProperty("kakao_account")
     private KakaoAccount kakaoAccount;
