@@ -1,4 +1,4 @@
-package dotori.guidely.domain.oauth.kakao;
+package dotori.guidely.domain.oauth.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class KakaoTokens {
+public class KakaoTokenResponseDto {
 
     @JsonProperty("access_token")
     private String accessToken;

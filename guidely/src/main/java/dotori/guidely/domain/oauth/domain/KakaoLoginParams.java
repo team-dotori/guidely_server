@@ -1,7 +1,7 @@
-package dotori.guidely.domain.oauth.kakao;
+package dotori.guidely.domain.oauth.domain;
 
 import dotori.guidely.domain.oauth.OAuthLoginParams;
-import dotori.guidely.domain.oauth.OAuthProvider;
+import dotori.guidely.domain.oauth.domain.OAuthProvider;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

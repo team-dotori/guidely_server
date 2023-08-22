@@ -1,4 +1,4 @@
-package dotori.guidely.domain.oauth;
+package dotori.guidely.global.utils.jwt;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;

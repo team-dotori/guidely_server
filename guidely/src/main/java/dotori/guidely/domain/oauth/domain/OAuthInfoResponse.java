@@ -1,4 +1,4 @@
-package dotori.guidely.domain.oauth;
+package dotori.guidely.domain.oauth.domain;
 
 public interface OAuthInfoResponse {
     String getEmail();
