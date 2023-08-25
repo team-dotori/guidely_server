@@ -4,46 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5cc6cdb0-2c0b-4a27-8ea6-b803eb525adf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/guidely.main.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/oauth/controller/OAuthController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/oauth/domain/OAuthProvider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/user/controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/user/domain/UserType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jpa-buddy.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="2776cb80-a742-4097-a261-55818debcd46" name="Changes" comment="feat: 신고 엔티티 추가">
+      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/domain/Declaration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/domain/DeclarationCategory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/domain/Location.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/domain/LocationType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/domain/RiskType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/gradlew.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/GuidelyApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/GuidelyApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/config/ClientConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/global/config/ClientConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/config/SwaggerConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/global/config/SwaggerConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/controller/AuthController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/controller/UserController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/oauth/AuthTokens.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/oauth/dto/AuthTokenDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/oauth/AuthTokensGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/global/utils/jwt/AuthTokensGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/oauth/JwtTokenProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/global/utils/jwt/JwtTokenProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/oauth/OAuthApiClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/oauth/OAuthApiClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/oauth/OAuthInfoResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/oauth/domain/OAuthInfoResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/oauth/OAuthLoginParams.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/oauth/OAuthLoginParams.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/oauth/OAuthProvider.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/oauth/kakao/KakaoApiClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/oauth/domain/KakaoApiClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/oauth/kakao/KakaoInfoResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/oauth/dto/response/KakaoInfoResponseDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/oauth/kakao/KakaoLoginParams.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/oauth/domain/KakaoLoginParams.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/oauth/kakao/KakaoTokens.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/oauth/dto/response/KakaoTokenResponseDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/user/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/user/UserType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/user/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/service/OAuthLoginService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/service/RequestOAuthInfoService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,18 +24,6 @@
       <ProjectState />
     </projectState>
   </component>
-  <component name="ExternalProjectsManager">
-    <system id="GRADLE">
-      <state>
-        <projects_view>
-          <tree_state>
-            <expand />
-            <select />
-          </tree_state>
-        </projects_view>
-      </state>
-    </system>
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -75,63 +32,72 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="develop" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="JpbToolWindowState">
-    <option name="isToolWindowVisible" value="false" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2UEaN8eDwwsT9VeD5IpJccqMFHW" />
-  <component name="ProjectViewState">
-    <option name="showLibraryContents" value="true" />
+  <component name="ProjectId" id="2UPz0kLWFVIXOYbcMLlymfpT1Py" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "feature/#7",
-    "last_opened_file_path": "/Users/jieon/Guidely_Backend/guidely/src/main/resources",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
-    "spring.configuration.checksum": "8a8b6c3fe97eb9120dc49f1f09171c9f",
-    "vue.rearranger.settings.migration": "true"
+  <component name="ProjectViewState">
+    <option name="compactDirectories" value="true" />
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showModules" value="false" />
+    <option name="showVisibilityIcons" value="true" />
+    <option name="sortByType" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/heeming/Desktop/도토리/guidely/src/main/java/dotori/guidely/domain&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;ca96123b3e864369361dad67a0a28dca&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/guidely/src/main/resources" />
+      <recent name="$PROJECT_DIR$/guidely/src/main/resources/templates" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="dotori.guidely.domain.declaration.domain" />
     </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
-      <module name="Guidely_Backend" />
+      <module name="도토리" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="Guidely_Backend" />
+      <module name="도토리" />
       <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GuidelyApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="guidely.main" />
+    <configuration name="Unnamed" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <option name="ACTIVE_PROFILES" />
+      <option name="ALTERNATIVE_JRE_PATH" value="11" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <module name="dotori.guidely.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="dotori.guidely.GuidelyApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -141,19 +107,14 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="5cc6cdb0-2c0b-4a27-8ea6-b803eb525adf" name="Changes" comment="" />
-      <created>1692507150277</created>
+      <changelist id="2776cb80-a742-4097-a261-55818debcd46" name="Changes" comment="" />
+      <created>1692855784151</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1692507150277</updated>
-      <workItem from="1692507151549" duration="294000" />
-      <workItem from="1692507451555" duration="31000" />
-      <workItem from="1692507497451" duration="17000" />
-      <workItem from="1692507525666" duration="4000" />
-      <workItem from="1692507560503" duration="7371000" />
-      <workItem from="1692581150322" duration="1951000" />
-      <workItem from="1692614692906" duration="10416000" />
-      <workItem from="1692687044600" duration="18155000" />
+      <updated>1692855784151</updated>
+      <workItem from="1692855787677" duration="733000" />
+      <workItem from="1692856544983" duration="2172000" />
+      <workItem from="1692925430668" duration="7973000" />
     </task>
     <servers />
   </component>
@@ -170,5 +131,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat: 신고 엔티티 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 신고 엔티티 추가" />
   </component>
 </project>
