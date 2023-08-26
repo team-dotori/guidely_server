@@ -1,10 +1,13 @@
 package dotori.guidely.domain.declaration.domain;
 
-import lombok.NonNull;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
 public class Location {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,4 +25,13 @@ public class Location {
 
     @Enumerated(EnumType.STRING)
     private LocationType type;
+
+    @Builder
+    public Location(@NonNull double latitude, @NonNull double longitude, @NonNull String address, String buildingName, LocationType type) {
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.address = address;
+        this.buildingName = buildingName;
+        this.type = type;
+    }
 }

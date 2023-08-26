@@ -1,9 +1,6 @@
 package dotori.guidely.domain.declaration.domain;
+import lombok.*;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import javax.persistence.*;
 
 @Entity
@@ -19,6 +16,7 @@ public class Declaration {
     @NonNull
     private DeclarationCategory category;
 
+    @NonNull
     private RiskType risk; // LOW,MEDIUM,HIGH
 
     @NonNull
@@ -28,10 +26,15 @@ public class Declaration {
 
     private String imgUrl;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Location location;
 
-
-
-
+    @Builder
+    public Declaration(@NonNull DeclarationCategory category, RiskType risk, @NonNull String contents, String imgUrl, Location location) {
+        this.category = category;
+        this.risk = risk;
+        this.contents = contents;
+        this.imgUrl = imgUrl;
+        this.location = location;
+    }
 }

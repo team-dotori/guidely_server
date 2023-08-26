@@ -4,6 +4,4 @@ public enum RiskType {
     LOW,
     MEDIUM,
     HIGH
-
-
 }
