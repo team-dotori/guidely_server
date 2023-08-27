@@ -31,4 +31,13 @@ public class DeclarationController {
         return ResponseEntity
                 .ok(declarationService.findAll());
     }
+    @DeleteMapping("{id}")
+    public ResponseEntity<Long> delete(@PathVariable Long id){
+        return ResponseEntity.ok(declarationService.delete(id));
+    }
+    @PatchMapping("{id}")
+    public ResponseEntity<Long> update(@PathVariable Long id,@RequestBody DeclarationDto declarationDto){
+        return ResponseEntity.ok(declarationService.update(id,declarationDto));
+    }
+    //TODO : 이미지 받아서 url로 바꾸는 controller저장
 }

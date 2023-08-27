@@ -37,4 +37,9 @@ public class Declaration {
         this.imgUrl = imgUrl;
         this.location = location;
     }
+    public void update(RiskType risk, String contents,String imgUrl){
+        this.risk = risk;
+        this.contents = contents;
+        this.imgUrl = imgUrl;
+    }
 }
