@@ -1,6 +1,5 @@
 package dotori.guidely.domain.declaration.controller;
 
-import dotori.guidely.domain.declaration.domain.Declaration;
 import dotori.guidely.domain.declaration.dto.DeclarationDto;
 import dotori.guidely.domain.declaration.dto.response.DeclarationResponseDto;
 import dotori.guidely.domain.declaration.service.DeclarationService;
@@ -21,7 +20,7 @@ public class DeclarationController {
     private final DeclarationService declarationService;
 
     @PostMapping
-    public ResponseEntity<Declaration> save(@RequestBody DeclarationDto declarationDto){
+    public ResponseEntity<DeclarationResponseDto> save(@RequestBody DeclarationDto declarationDto){
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(declarationService.saveDeclaration(declarationDto));

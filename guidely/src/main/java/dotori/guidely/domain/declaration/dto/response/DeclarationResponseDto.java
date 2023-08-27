@@ -13,5 +13,6 @@ public class DeclarationResponseDto {
     private String contents;
     private int likeCount;
     private String imgUrl;
+    private String specification;
     private Location location;
 }

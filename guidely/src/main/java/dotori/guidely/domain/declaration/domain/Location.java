@@ -1,8 +1,11 @@
 package dotori.guidely.domain.declaration.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -11,6 +14,7 @@ import javax.persistence.*;
 public class Location {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "location_id")
     private Long id;
 
     @NonNull
@@ -26,6 +30,13 @@ public class Location {
     @Enumerated(EnumType.STRING)
     private LocationType type;
 
+    @OneToMany(mappedBy = "location")
+    @JsonManagedReference
+    private List<Declaration> declarationList = new ArrayList<>();
+
+    public void addDeclaration(Declaration declaration){ //편의 메소드
+        this.declarationList.add(declaration);
+    }
     @Builder
     public Location(@NonNull double latitude, @NonNull double longitude, @NonNull String address, String buildingName, LocationType type) {
         this.latitude = latitude;

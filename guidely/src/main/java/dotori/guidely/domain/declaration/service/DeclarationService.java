@@ -22,8 +22,11 @@ public class DeclarationService {
 
     private final ModelMapper modelMapper;
     @Transactional
-    public Declaration saveDeclaration(DeclarationDto declarationDto) {
-        return declarationRepository.save(declarationDto.toEntity());
+    public DeclarationResponseDto saveDeclaration(DeclarationDto declarationDto) {
+        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+        Declaration declaration = declarationRepository.save(declarationDto.toEntity());
+        return modelMapper.map(declaration,DeclarationResponseDto.class);
+
     }
 
     public List <DeclarationResponseDto> findAll(){
