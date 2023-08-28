@@ -29,7 +29,7 @@ public class LocationService {
         return locationResponseDtos;
     }
 
-    public Optional<Location> findByCoor(double latitude, double longitude){
+    public Optional<Location> checkLocationIsExist(double latitude, double longitude){
         return locationRepository.findByLatitudeAndLongitude(latitude, longitude);
 
     }
