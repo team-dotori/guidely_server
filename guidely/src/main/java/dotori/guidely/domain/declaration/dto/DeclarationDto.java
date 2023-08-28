@@ -22,13 +22,6 @@ public class DeclarationDto {
     private String specification;
 
     public Declaration toEntity(){ //DTO에 필요한 부분을 빌더 패턴을 이용해 Entity를 만드는 일
-        Location location = Location.builder()
-                .address(address)
-                .buildingName(buildingName)
-                .latitude(latitude)
-                .longitude(longitude)
-                .type(type)
-                .build();
         Declaration declaration = Declaration.builder()
                 .category(category)
                 .contents(contents)
@@ -36,8 +29,6 @@ public class DeclarationDto {
                 .risk(risk)
                 .specification(specification)
                 .build();
-        location.addDeclaration(declaration);
-        declaration.setLocation(location);
         return declaration;
     }
 

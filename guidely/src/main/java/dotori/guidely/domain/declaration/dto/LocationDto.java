@@ -18,4 +18,5 @@ public class LocationDto {
     private String buildingName;
     private LocationType type;
     private List<Declaration> declarationList = new ArrayList<>();
+
 }

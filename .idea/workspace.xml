@@ -4,14 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2776cb80-a742-4097-a261-55818debcd46" name="Changes" comment="Comment : 신고 controller 필요한 주석 추가">
-      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/controller/LocationController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/dto/LocationDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/dto/response/LocationResponseDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/service/LocationService.java" afterDir="false" />
+    <list default="true" id="2776cb80-a742-4097-a261-55818debcd46" name="Changes" comment="Fix : 신고 저장 시 같은 위치 중복 생성 수정 &#10;&#10;- 신고 저장할 때 항상 새로운 location을 할당 받아 저장하는 것을 위도/경도 기반으로 같은 위치가 없다면 새로 생성, 있다면 거기 신고 리스트에 신고 추가 (Optional 사용)&#10;- 신고의 location 넣는 함수 : setLocation &#10;- 위치의 declaration 리스트에 넣는 함수 : addDeclaration">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/controller/DeclarationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/controller/DeclarationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/domain/Declaration.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/domain/Declaration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/domain/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/domain/Location.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/dto/DeclarationDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/dto/DeclarationDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/dto/LocationDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/dto/LocationDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/dto/response/LocationResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/dto/response/LocationResponseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/repository/LocationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/repository/LocationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/service/DeclarationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/service/DeclarationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/service/LocationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/service/LocationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/exception/ErrorCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/exception/ErrorCode.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +171,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693194994036</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Feat : Location Dto, Repository 추가&#10;&#10;디버그를 위한 저장된 Location 정보 가져오는 기능 추가">
+      <created>1693196240368</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1693196240368</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -224,7 +234,10 @@
     <MESSAGE value="Feat: ExceptionHandler 기능 추가 &#10;&#10;기본적인 exception과 찾는 신고정보가 없을 때의 customexcepion 추가함.&#10;추가적인 customexception이 필요하다면 ErrorCode에 추가하면 됨." />
     <MESSAGE value="Feat: 신고 정보 삭제하기, 수정하기 기능 추가" />
     <MESSAGE value="Comment : 신고 controller 필요한 주석 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="Comment : 신고 controller 필요한 주석 추가" />
+    <MESSAGE value="Feat : Location Dto, Repository 추가&#10;&#10;디버그를 위한 저장된 Location 정보 가져오는 기능 추가" />
+    <MESSAGE value="Fix : 신고 저장 시 같은 위치 중복 생성 수정 &#10;&#10;- 신고 저장할 때 항상 새로운 location을 할당 받아 저장하는 것을 위도/경도 기반으로 같은 위치가 없다면 새로 생성, 있다면 거기 신고 리스트에 신고 추가&#10;- 신고의 location 넣는 함수 : setLocation &#10;- 위치의 declaration 리스트에 넣는 함수 : addDeclaration" />
+    <MESSAGE value="Fix : 신고 저장 시 같은 위치 중복 생성 수정 &#10;&#10;- 신고 저장할 때 항상 새로운 location을 할당 받아 저장하는 것을 위도/경도 기반으로 같은 위치가 없다면 새로 생성, 있다면 거기 신고 리스트에 신고 추가 (Optional 사용)&#10;- 신고의 location 넣는 함수 : setLocation &#10;- 위치의 declaration 리스트에 넣는 함수 : addDeclaration" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix : 신고 저장 시 같은 위치 중복 생성 수정 &#10;&#10;- 신고 저장할 때 항상 새로운 location을 할당 받아 저장하는 것을 위도/경도 기반으로 같은 위치가 없다면 새로 생성, 있다면 거기 신고 리스트에 신고 추가 (Optional 사용)&#10;- 신고의 location 넣는 함수 : setLocation &#10;- 위치의 declaration 리스트에 넣는 함수 : addDeclaration" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

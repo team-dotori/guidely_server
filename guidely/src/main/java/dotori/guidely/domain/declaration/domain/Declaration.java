@@ -1,6 +1,6 @@
 package dotori.guidely.domain.declaration.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -33,7 +33,7 @@ public class Declaration {
     private String imgUrl;
 // 상세 분류, 이미지url
     @ManyToOne(cascade = CascadeType.ALL)
-    @JsonBackReference
+    @JsonManagedReference
     @JoinColumn(name="location_id")
     private Location location;
 

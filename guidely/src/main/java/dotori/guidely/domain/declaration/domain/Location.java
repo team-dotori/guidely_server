@@ -1,6 +1,6 @@
 package dotori.guidely.domain.declaration.domain;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -31,7 +31,7 @@ public class Location {
     private LocationType type;
 
     @OneToMany(mappedBy = "location")
-    @JsonManagedReference
+    @JsonBackReference
     private List<Declaration> declarationList = new ArrayList<>();
 
     public void addDeclaration(Declaration declaration){ //편의 메소드
