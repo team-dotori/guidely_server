@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class DeclarationDto {
-
+    private Long declarationId;
     private DeclarationCategory category;
     private RiskType risk; // LOW,MEDIUM,HIGH
     private String contents;

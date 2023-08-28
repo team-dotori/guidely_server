@@ -4,15 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2776cb80-a742-4097-a261-55818debcd46" name="Changes" comment="Feat: 신고 정보 삭제하기, 수정하기 기능 추가">
-      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/repository/LocationRepository.java" afterDir="false" />
+    <list default="true" id="2776cb80-a742-4097-a261-55818debcd46" name="Changes" comment="Comment : 신고 controller 필요한 주석 추가">
+      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/controller/LocationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/dto/LocationDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/dto/response/LocationResponseDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/service/LocationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/controller/DeclarationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/controller/DeclarationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/domain/Declaration.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/domain/Declaration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/domain/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/domain/Location.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/dto/DeclarationDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/dto/DeclarationDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/dto/response/DeclarationResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/dto/response/DeclarationResponseDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/service/DeclarationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/service/DeclarationService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,9 +29,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Kotlin Class" />
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -162,7 +161,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693115850721</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Comment : 신고 controller 필요한 주석 추가">
+      <created>1693194994036</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1693194994036</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -217,7 +223,8 @@
     <MESSAGE value="feat: 신고 정보 모두 가져오기 기능 추가" />
     <MESSAGE value="Feat: ExceptionHandler 기능 추가 &#10;&#10;기본적인 exception과 찾는 신고정보가 없을 때의 customexcepion 추가함.&#10;추가적인 customexception이 필요하다면 ErrorCode에 추가하면 됨." />
     <MESSAGE value="Feat: 신고 정보 삭제하기, 수정하기 기능 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="Feat: 신고 정보 삭제하기, 수정하기 기능 추가" />
+    <MESSAGE value="Comment : 신고 controller 필요한 주석 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="Comment : 신고 controller 필요한 주석 추가" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

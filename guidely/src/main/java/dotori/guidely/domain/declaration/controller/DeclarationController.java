@@ -32,9 +32,9 @@ public class DeclarationController {
      * 신고 정보 모두 가져오기
      */
     @GetMapping
-    public ResponseEntity<List<DeclarationResponseDto>> declarationFindAll(){
+    public ResponseEntity<List<DeclarationResponseDto>> findAll(){
         return ResponseEntity
-                .ok(declarationService.declarationFindAll());
+                .ok(declarationService.findAll());
     }
     /**
      * 신고 정보 삭제하기
