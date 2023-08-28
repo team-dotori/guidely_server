@@ -19,24 +19,40 @@ import java.util.List;
 public class DeclarationController {
     private final DeclarationService declarationService;
 
+    /**
+     * 저장
+     */
     @PostMapping
     public ResponseEntity<DeclarationResponseDto> save(@RequestBody DeclarationDto declarationDto){
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(declarationService.saveDeclaration(declarationDto));
     }
+    /**
+     * 신고 정보 모두 가져오기
+     */
     @GetMapping
-    public ResponseEntity<List<DeclarationResponseDto>> findAll(){
+    public ResponseEntity<List<DeclarationResponseDto>> declarationFindAll(){
         return ResponseEntity
-                .ok(declarationService.findAll());
+                .ok(declarationService.declarationFindAll());
     }
+    /**
+     * 신고 정보 삭제하기
+     */
     @DeleteMapping("{id}")
     public ResponseEntity<Long> delete(@PathVariable Long id){
         return ResponseEntity.ok(declarationService.delete(id));
     }
+    /**
+     * 신고 정보 수정하기
+     */
     @PatchMapping("{id}")
     public ResponseEntity<Long> update(@PathVariable Long id,@RequestBody DeclarationDto declarationDto){
         return ResponseEntity.ok(declarationService.update(id,declarationDto));
     }
-    //TODO : 이미지 받아서 url로 바꾸는 controller저장
+
+
+    //TODO : 위치 ID로 신고 List조회
+    //TODO : User Id로 Location 참조기능
+
 }
