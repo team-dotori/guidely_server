@@ -52,7 +52,7 @@ public class DeclarationController {
     }
 
 
-    //TODO : 위치 ID로 신고 List조회
-    //TODO : User Id로 Location 참조기능
+    // TODO : 위치 ID로 신고 List조회
+    // TODO : User Id로 Location 참조기능
 
 }

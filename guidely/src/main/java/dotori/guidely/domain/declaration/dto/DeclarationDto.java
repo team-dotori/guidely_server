@@ -8,19 +8,16 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class DeclarationDto {
-    private Long declarationId;
     private DeclarationCategory category;
     private RiskType risk; // LOW,MEDIUM,HIGH
     private String contents;
     private String imgUrl;
+    private String specification;
     private double latitude;
     private double longitude;
     private String address; //도로명 주소
     private String buildingName;
     private LocationType type;
-
-    private String specification;
-
     public Declaration toEntity(){ //DTO에 필요한 부분을 빌더 패턴을 이용해 Entity를 만드는 일
         Declaration declaration = Declaration.builder()
                 .category(category)

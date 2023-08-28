@@ -1,13 +1,11 @@
 package dotori.guidely.domain.declaration.controller;
 
+import dotori.guidely.domain.declaration.dto.response.ListDclarationResponseDto;
 import dotori.guidely.domain.declaration.dto.response.LocationResponseDto;
 import dotori.guidely.domain.declaration.service.LocationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,5 +23,14 @@ public class LocationController {
     public ResponseEntity<List<LocationResponseDto>> findAll(){
         return ResponseEntity.ok(locationService.findAll());
     }
+
+    /**
+     * Location Id로 신고 리스트 가져오기
+     */
+    @GetMapping("{id}")
+    public ResponseEntity<List<ListDclarationResponseDto>> findById(@PathVariable long id){
+        return ResponseEntity.ok(locationService.findById(id));
+    }
+
     //TODO : 위도 경도로 위치 조회
 }
