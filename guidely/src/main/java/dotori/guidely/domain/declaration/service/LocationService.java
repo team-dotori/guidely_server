@@ -33,8 +33,17 @@ public class LocationService {
         return locationRepository.findByLatitudeAndLongitude(latitude, longitude);
 
     }
+
+    public LocationResponseDto findByCoor(double latitude, double longitude){
+        return LocationResponseDto
+                .builder()
+                .location(locationRepository.findByLatitudeAndLongitude(latitude, longitude)
+                        .orElseThrow(() -> new CustomException(ErrorCode.LOCATION_NOT_FOUND)))
+                .build();
+    }
     public List<ListDclarationResponseDto> findById(long id){
-        Location location = locationRepository.findById(id).orElseThrow(() -> new CustomException(ErrorCode.LOCATION_NOT_FOUND));
+        Location location = locationRepository.findById(id)
+                .orElseThrow(() -> new CustomException(ErrorCode.LOCATION_NOT_FOUND));
         List<ListDclarationResponseDto> declarationDtos = new ArrayList<>();
         for(Declaration declaration: location.getDeclarationList()){
             declarationDtos.add(ListDclarationResponseDto.builder().declaration(declaration).build());

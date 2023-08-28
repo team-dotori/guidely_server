@@ -31,6 +31,11 @@ public class LocationController {
     public ResponseEntity<List<ListDclarationResponseDto>> findById(@PathVariable long id){
         return ResponseEntity.ok(locationService.findById(id));
     }
-
-    //TODO : 위도 경도로 위치 조회
+    /**
+     * 위도/경도로 특정 Location 가져오기
+     */
+    @GetMapping("coordinate")
+    public ResponseEntity<LocationResponseDto> findByCoordinate(@RequestParam double latitude, @RequestParam double longitude){
+        return ResponseEntity.ok(locationService.findByCoor(latitude,longitude));
+    }
 }
