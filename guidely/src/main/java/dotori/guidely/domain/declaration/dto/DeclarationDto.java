@@ -1,7 +1,9 @@
 package dotori.guidely.domain.declaration.dto;
 
-import dotori.guidely.domain.declaration.domain.*;
-import lombok.Builder;
+import dotori.guidely.domain.declaration.domain.Declaration;
+import dotori.guidely.domain.declaration.domain.DeclarationCategory;
+import dotori.guidely.domain.declaration.domain.LocationType;
+import dotori.guidely.domain.declaration.domain.RiskType;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -28,21 +30,5 @@ public class DeclarationDto {
                 .build();
         return declaration;
     }
-
-    @Builder
-    public DeclarationDto(DeclarationCategory category, RiskType risk, String contents, String imgUrl, double latitude, double longitude, String address, String buildingName, LocationType type,String specification) {
-        this.category = category;
-        this.risk = risk;
-        this.contents = contents;
-        this.imgUrl = imgUrl;
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.address = address;
-        this.buildingName = buildingName;
-        this.type = type;
-        this.specification= specification;
-    }
-
-
 
 }

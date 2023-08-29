@@ -51,7 +51,7 @@ public class LocationService {
         return declarationDtos;
     }
 
-    public List<LocationResponseDto> findArroundByCoordinate(double latitude, double longitude) {
+    public List<LocationResponseDto> findArroundByCoordinate(double latitude, double longitude) { //
         List<Location> arroundByCoordinate = locationRepository.findArroundByCoordinate(latitude, longitude);
         List<LocationResponseDto> locationResponseDtos = new ArrayList<>();
         for(Location location : arroundByCoordinate){
