@@ -38,4 +38,11 @@ public class LocationController {
     public ResponseEntity<LocationResponseDto> findByCoordinate(@RequestParam double latitude, @RequestParam double longitude){
         return ResponseEntity.ok(locationService.findByCoor(latitude,longitude));
     }
+    /**
+     * 위도/경도의 50m반경 위치정보 가져오기
+     */
+    @GetMapping("navigation")
+    public ResponseEntity<List<LocationResponseDto>> findArroundByCoordinate(@RequestParam double latitude, @RequestParam double longitude){
+        return ResponseEntity.ok(locationService.findArroundByCoordinate(latitude,longitude));
+    }
 }

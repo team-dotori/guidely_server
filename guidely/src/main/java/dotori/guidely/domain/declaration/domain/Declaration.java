@@ -18,7 +18,7 @@ public class Declaration {
     @Enumerated(EnumType.STRING)
     @NonNull
     private DeclarationCategory category;
-
+    @Enumerated(EnumType.STRING)
     @NonNull
     private RiskType risk; // LOW,MEDIUM,HIGH
 
@@ -37,7 +37,7 @@ public class Declaration {
     @JoinColumn(name="location_id")
     private Location location;
 
-    //TODO user 1 declaration 다 구현
+    //TODO user 1 declaration 다 구현, 클라이언트에서 accessToken 받으면 userId로 설정하기 (JwtTokenProvider.class)
 
     @Builder
     public Declaration(@NonNull DeclarationCategory category, RiskType risk, @NonNull String contents, String imgUrl, @NonNull String specification) {
