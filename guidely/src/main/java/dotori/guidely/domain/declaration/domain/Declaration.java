@@ -1,5 +1,6 @@
 package dotori.guidely.domain.declaration.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import dotori.guidely.domain.user.domain.User;
 import lombok.*;
@@ -19,7 +20,7 @@ public class Declaration {
     @Enumerated(EnumType.STRING)
     @NonNull
     private DeclarationCategory category;
-    @Enumerated(EnumType.STRING)
+
     @NonNull
     private RiskType risk; // LOW,MEDIUM,HIGH
 
@@ -38,7 +39,8 @@ public class Declaration {
     @JoinColumn(name="location_id")
     private Location location;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "user_id")
     private User user;
     //TODO user 1 declaration 다 구현, 클라이언트에서 accessToken 받으면 userId로 설정하기 (JwtTokenProvider.class)
@@ -57,15 +59,16 @@ public class Declaration {
             this.location.getDeclarationList().remove(this);
         }
         this.location = location;
-        if(!location.getDeclarationList().contains(this)){
-            location.getDeclarationList().add(this);
-        }
-
     }
-
-//    public void setUser(User user){
-//        this.user = user;
-//    }
+    public void setUser(User user){
+        if(this.user !=null){
+            this.user.getDeclarationList().remove(this);
+        }
+        this.user = user;
+        if(!user.getDeclarationList().contains(this)){
+            user.getDeclarationList().add(this);
+        }
+    }
 
     public void update(RiskType risk, String contents,String imgUrl){
         this.risk = risk;

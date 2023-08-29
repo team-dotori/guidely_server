@@ -1,7 +1,7 @@
 package dotori.guidely.domain.user.service;
 
 import dotori.guidely.domain.declaration.domain.Declaration;
-import dotori.guidely.domain.declaration.dto.DeclarationDto;
+import dotori.guidely.domain.declaration.dto.response.DeclarationResponseDto;
 import dotori.guidely.domain.user.domain.User;
 import dotori.guidely.domain.user.dto.UserDto;
 import dotori.guidely.domain.user.repository.UserRepository;
@@ -21,14 +21,13 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
-
     public List<UserDto> findAll() {
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 
         List<User> users = userRepository.findAll();
         List<UserDto> dtos = new ArrayList<>();
-
         for (User user : users) {
+            System.out.println("user.getDeclarationList() = " + user.getDeclarationList());
             dtos.add(modelMapper.map(user, UserDto.class));
         }
 
@@ -47,9 +46,17 @@ public class UserService {
 
         return modelMapper.map(user, UserDto.class);
     }
-    public void saveDeclaration(long userId, DeclarationDto declarationDto){
+
+    public List<DeclarationResponseDto> findDeclarationList(long userId) {
+        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+
         User user = userRepository.findByUserId(userId).orElseThrow(()->new CustomException(ErrorCode.USER_NOT_FOUND));
-        Declaration declaration = declarationDto.toEntity();
-        user.addDeclaration(declaration);
+        List<Declaration> declarationList = user.getDeclarationList();
+        List<DeclarationResponseDto> declarationResponseDtos = new ArrayList<>();
+
+        for(Declaration declaration : declarationList){
+            declarationResponseDtos.add(modelMapper.map(declaration,DeclarationResponseDto.class));
+        }
+        return declarationResponseDtos;
     }
 }

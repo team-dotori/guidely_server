@@ -1,5 +1,6 @@
 package dotori.guidely.domain.user.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import dotori.guidely.domain.declaration.domain.Declaration;
 import dotori.guidely.domain.oauth.domain.OAuthProvider;
 import lombok.AllArgsConstructor;
@@ -42,7 +43,8 @@ public class User {
     private OAuthProvider oAuthProvider;
 
     @OneToMany(mappedBy = "user")
-    private List<Declaration> declarationList = new ArrayList<>();
+    @JsonManagedReference
+    private List<Declaration> declarationList=new ArrayList<>(); ;
 
     @Builder
     public User(String email, String nickname, OAuthProvider oAuthProvider) {

@@ -5,6 +5,8 @@ import dotori.guidely.domain.declaration.domain.Location;
 import dotori.guidely.domain.declaration.dto.DeclarationDto;
 import dotori.guidely.domain.declaration.dto.response.DeclarationResponseDto;
 import dotori.guidely.domain.declaration.repository.DeclarationRepository;
+import dotori.guidely.domain.user.domain.User;
+import dotori.guidely.domain.user.repository.UserRepository;
 import dotori.guidely.exception.CustomException;
 import dotori.guidely.exception.ErrorCode;
 import lombok.RequiredArgsConstructor;
@@ -21,13 +23,15 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class DeclarationService {
     private final DeclarationRepository declarationRepository;
-
+    private final UserRepository userRepository;
     private final LocationService locationService;
     private final ModelMapper modelMapper;
     @Transactional
-    public DeclarationResponseDto saveDeclaration(DeclarationDto declarationDto) {
+    public DeclarationResponseDto saveDeclaration(long userId, DeclarationDto declarationDto) {
+        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         Optional<Location> location = locationService.checkLocationIsExist(declarationDto.getLatitude(),declarationDto.getLongitude());
         Declaration declarationEntity = declarationDto.toEntity();
+        User user = userRepository.findByUserId(userId).orElseThrow(()->new CustomException(ErrorCode.USER_NOT_FOUND));
         if (location.isEmpty()){ //처음 저장되는 위치라면
             Location newLocation = Location.builder()
                     .address(declarationDto.getAddress())
@@ -42,7 +46,8 @@ public class DeclarationService {
             declarationEntity.setLocation(location.orElseThrow(()-> new CustomException(ErrorCode.INTERNAL_SERVER_ERROR)));
             location.get().getDeclarationList().add(declarationEntity);
         }
-
+        declarationEntity.setUser(user);
+        user.addDeclaration(declarationEntity);
         Declaration declaration = declarationRepository.save(declarationEntity);
 
         return modelMapper.map(declaration,DeclarationResponseDto.class);

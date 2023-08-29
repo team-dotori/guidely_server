@@ -4,14 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2776cb80-a742-4097-a261-55818debcd46" name="Changes" comment="Feat : 현재 위치 기준(위도,경도) 반경 500m 신고 내역 가져오는 기능 추가&#10;&#10;- 쿼리문 : &quot;select loc from Location loc where ST_Distance_Sphere(POINT(:longitude,:latitude), POINT(loc.longitude,loc.latitude)) &lt;= 500&quot;&#10;- 반경 범위는 수정 가능&#10;- local mysql 추가">
+    <list default="true" id="2776cb80-a742-4097-a261-55818debcd46" name="Changes" comment="Feat : 현재 위치 기준(위도,경도) 반경 500m 신고 내역 가져오는 기능 추가&#10;&#10;- user not Found error code 추가&#10;- 신고 저장할 때 accessToken받아서 User 객체에 신고 내역 추가해줌.&#10;- User Service에 saveDeclaration 추가&#10;- User에 addDeclaration 추가 &#10;- Declaration객체에는 User 지정 안함. (신고 id로 user을 찾을 일이 없다고 판단)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/controller/DeclarationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/controller/DeclarationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/controller/LocationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/controller/LocationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/domain/Declaration.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/domain/Declaration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/dto/response/DeclarationResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/dto/response/DeclarationResponseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/dto/response/ListDclarationResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/dto/response/ListDclarationByLocationIdResponseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/service/DeclarationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/service/DeclarationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/service/LocationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/service/LocationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/user/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/user/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/user/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/user/domain/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/user/dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/user/dto/UserDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/user/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/user/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/exception/ErrorCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/exception/ErrorCode.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +131,8 @@
       <workItem from="1693041457199" duration="1512000" />
       <workItem from="1693109525428" duration="12741000" />
       <workItem from="1693203016668" duration="14265000" />
-      <workItem from="1693282791036" duration="2914000" />
+      <workItem from="1693282791036" duration="4485000" />
+      <workItem from="1693287300941" duration="7633000" />
     </task>
     <task id="LOCAL-00001" summary="feat: 신고 엔티티 추가">
       <created>1692972982779</created>
@@ -212,7 +218,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693282695447</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Feat : 현재 위치 기준(위도,경도) 반경 500m 신고 내역 가져오는 기능 추가&#10;&#10;- user not Found error code 추가&#10;- 신고 저장할 때 accessToken받아서 User 객체에 신고 내역 추가해줌.&#10;- User Service에 saveDeclaration 추가&#10;- User에 addDeclaration 추가 &#10;- Declaration객체에는 User 지정 안함. (신고 id로 user을 찾을 일이 없다고 판단)">
+      <created>1693286058778</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1693286058778</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -276,7 +289,8 @@
     <MESSAGE value="Feat : 도로명주소로 특정 Location 정보 가져오기 기능 추가" />
     <MESSAGE value="Feat : 현재 위치 기준(위도,경도) 반경 500m 신고 내역 가져오는 기능 추가&#10;&#10;- 쿼리문 : &quot;select loc from Location loc where ST_Distance_Sphere(POINT(:longitude,:latitude), POINT(loc.longitude,loc.latitude)) &lt;= 500&quot;&#10;- 반경 범위는 수정 가능" />
     <MESSAGE value="Feat : 현재 위치 기준(위도,경도) 반경 500m 신고 내역 가져오는 기능 추가&#10;&#10;- 쿼리문 : &quot;select loc from Location loc where ST_Distance_Sphere(POINT(:longitude,:latitude), POINT(loc.longitude,loc.latitude)) &lt;= 500&quot;&#10;- 반경 범위는 수정 가능&#10;- local mysql 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="Feat : 현재 위치 기준(위도,경도) 반경 500m 신고 내역 가져오는 기능 추가&#10;&#10;- 쿼리문 : &quot;select loc from Location loc where ST_Distance_Sphere(POINT(:longitude,:latitude), POINT(loc.longitude,loc.latitude)) &lt;= 500&quot;&#10;- 반경 범위는 수정 가능&#10;- local mysql 추가" />
+    <MESSAGE value="Feat : 현재 위치 기준(위도,경도) 반경 500m 신고 내역 가져오는 기능 추가&#10;&#10;- user not Found error code 추가&#10;- 신고 저장할 때 accessToken받아서 User 객체에 신고 내역 추가해줌.&#10;- User Service에 saveDeclaration 추가&#10;- User에 addDeclaration 추가 &#10;- Declaration객체에는 User 지정 안함. (신고 id로 user을 찾을 일이 없다고 판단)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Feat : 현재 위치 기준(위도,경도) 반경 500m 신고 내역 가져오는 기능 추가&#10;&#10;- user not Found error code 추가&#10;- 신고 저장할 때 accessToken받아서 User 객체에 신고 내역 추가해줌.&#10;- User Service에 saveDeclaration 추가&#10;- User에 addDeclaration 추가 &#10;- Declaration객체에는 User 지정 안함. (신고 id로 user을 찾을 일이 없다고 판단)" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

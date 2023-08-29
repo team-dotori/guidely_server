@@ -2,7 +2,7 @@ package dotori.guidely.domain.declaration.service;
 
 import dotori.guidely.domain.declaration.domain.Declaration;
 import dotori.guidely.domain.declaration.domain.Location;
-import dotori.guidely.domain.declaration.dto.response.ListDclarationResponseDto;
+import dotori.guidely.domain.declaration.dto.response.ListDclarationByLocationIdResponseDto;
 import dotori.guidely.domain.declaration.dto.response.LocationResponseDto;
 import dotori.guidely.domain.declaration.repository.LocationRepository;
 import dotori.guidely.exception.CustomException;
@@ -41,12 +41,12 @@ public class LocationService {
                         .orElseThrow(() -> new CustomException(ErrorCode.LOCATION_NOT_FOUND)))
                 .build();
     }
-    public List<ListDclarationResponseDto> findById(long id){
+    public List<ListDclarationByLocationIdResponseDto> findById(long id){
         Location location = locationRepository.findById(id)
                 .orElseThrow(() -> new CustomException(ErrorCode.LOCATION_NOT_FOUND));
-        List<ListDclarationResponseDto> declarationDtos = new ArrayList<>();
+        List<ListDclarationByLocationIdResponseDto> declarationDtos = new ArrayList<>();
         for(Declaration declaration: location.getDeclarationList()){
-            declarationDtos.add(ListDclarationResponseDto.builder().declaration(declaration).build());
+            declarationDtos.add(ListDclarationByLocationIdResponseDto.builder().declaration(declaration).build());
         }
         return declarationDtos;
     }

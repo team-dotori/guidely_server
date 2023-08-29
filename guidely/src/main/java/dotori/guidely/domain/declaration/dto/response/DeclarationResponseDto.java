@@ -7,7 +7,6 @@ import lombok.Data;
 
 @Data
 public class DeclarationResponseDto {
-    private Long declarationId;
     private DeclarationCategory category;
     private RiskType risk; // LOW,MEDIUM,HIGH
     private String contents;
