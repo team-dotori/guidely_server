@@ -1,8 +1,12 @@
 package dotori.guidely.domain.user.service;
 
+import dotori.guidely.domain.declaration.domain.Declaration;
+import dotori.guidely.domain.declaration.dto.DeclarationDto;
 import dotori.guidely.domain.user.domain.User;
 import dotori.guidely.domain.user.dto.UserDto;
 import dotori.guidely.domain.user.repository.UserRepository;
+import dotori.guidely.exception.CustomException;
+import dotori.guidely.exception.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
@@ -43,5 +47,9 @@ public class UserService {
 
         return modelMapper.map(user, UserDto.class);
     }
-
+    public void saveDeclaration(long userId, DeclarationDto declarationDto){
+        User user = userRepository.findByUserId(userId).orElseThrow(()->new CustomException(ErrorCode.USER_NOT_FOUND));
+        Declaration declaration = declarationDto.toEntity();
+        user.addDeclaration(declaration);
+    }
 }

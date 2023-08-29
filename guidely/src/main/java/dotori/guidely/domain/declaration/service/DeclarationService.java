@@ -26,8 +26,6 @@ public class DeclarationService {
     private final ModelMapper modelMapper;
     @Transactional
     public DeclarationResponseDto saveDeclaration(DeclarationDto declarationDto) {
-        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
-
         Optional<Location> location = locationService.checkLocationIsExist(declarationDto.getLatitude(),declarationDto.getLongitude());
         Declaration declarationEntity = declarationDto.toEntity();
         if (location.isEmpty()){ //처음 저장되는 위치라면

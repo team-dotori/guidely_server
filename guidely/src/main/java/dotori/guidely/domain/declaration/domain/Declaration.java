@@ -1,6 +1,7 @@
 package dotori.guidely.domain.declaration.domain;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import dotori.guidely.domain.user.domain.User;
 import lombok.*;
 
 import javax.persistence.*;
@@ -37,6 +38,9 @@ public class Declaration {
     @JoinColumn(name="location_id")
     private Location location;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private User user;
     //TODO user 1 declaration 다 구현, 클라이언트에서 accessToken 받으면 userId로 설정하기 (JwtTokenProvider.class)
 
     @Builder
@@ -58,6 +62,11 @@ public class Declaration {
         }
 
     }
+
+//    public void setUser(User user){
+//        this.user = user;
+//    }
+
     public void update(RiskType risk, String contents,String imgUrl){
         this.risk = risk;
         this.contents = contents;

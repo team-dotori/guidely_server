@@ -3,6 +3,8 @@ package dotori.guidely.domain.declaration.controller;
 import dotori.guidely.domain.declaration.dto.DeclarationDto;
 import dotori.guidely.domain.declaration.dto.response.DeclarationResponseDto;
 import dotori.guidely.domain.declaration.service.DeclarationService;
+import dotori.guidely.domain.user.service.UserService;
+import dotori.guidely.global.utils.jwt.AuthTokensGenerator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -18,12 +20,16 @@ import java.util.List;
 @Slf4j
 public class DeclarationController {
     private final DeclarationService declarationService;
+    private final UserService userService;
 
+    private final AuthTokensGenerator authTokensGenerator;
     /**
-     * 저장
+     * 신고 정보 저장
      */
     @PostMapping
-    public ResponseEntity<DeclarationResponseDto> save(@RequestBody DeclarationDto declarationDto){
+    public ResponseEntity<DeclarationResponseDto> save(@RequestHeader(value="accessToken") String accessToken,@RequestBody DeclarationDto declarationDto){
+        Long userId = authTokensGenerator.extractUserId(accessToken);
+        userService.saveDeclaration(userId,declarationDto); // user의 신고 리스트에 저장
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(declarationService.saveDeclaration(declarationDto));
@@ -50,7 +56,6 @@ public class DeclarationController {
     public ResponseEntity<Long> update(@PathVariable Long id,@RequestBody DeclarationDto declarationDto){
         return ResponseEntity.ok(declarationService.update(id,declarationDto));
     }
-
 
     // TODO : User Id로 Location 참조기능
 
