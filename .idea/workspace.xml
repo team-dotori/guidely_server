@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2776cb80-a742-4097-a261-55818debcd46" name="Changes" comment="Feat: 신고 정보 삭제하기, 수정하기 기능 추가">
-      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/repository/LocationRepository.java" afterDir="false" />
+    <list default="true" id="2776cb80-a742-4097-a261-55818debcd46" name="Changes" comment="Refactor : 필요없는 코드 삭제">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/controller/DeclarationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/controller/DeclarationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/domain/Declaration.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/domain/Declaration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/domain/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/domain/Location.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/dto/DeclarationDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/dto/DeclarationDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/dto/response/DeclarationResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/dto/response/DeclarationResponseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/dto/response/LocationResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/dto/response/LocationResponseDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/service/DeclarationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/service/DeclarationService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,9 +29,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Kotlin Class" />
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -126,6 +125,9 @@
       <workItem from="1693024887149" duration="14119000" />
       <workItem from="1693041457199" duration="1512000" />
       <workItem from="1693109525428" duration="12741000" />
+      <workItem from="1693203016668" duration="14265000" />
+      <workItem from="1693282791036" duration="4485000" />
+      <workItem from="1693287300941" duration="13795000" />
     </task>
     <task id="LOCAL-00001" summary="feat: 신고 엔티티 추가">
       <created>1692972982779</created>
@@ -162,7 +164,77 @@
       <option name="project" value="LOCAL" />
       <updated>1693115850721</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Comment : 신고 controller 필요한 주석 추가">
+      <created>1693194994036</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1693194994036</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Feat : Location Dto, Repository 추가&#10;&#10;디버그를 위한 저장된 Location 정보 가져오는 기능 추가">
+      <created>1693196240368</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1693196240368</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Fix : 신고 저장 시 같은 위치 중복 생성 수정 &#10;&#10;- 신고 저장할 때 항상 새로운 location을 할당 받아 저장하는 것을 위도/경도 기반으로 같은 위치가 없다면 새로 생성, 있다면 거기 신고 리스트에 신고 추가 (Optional 사용)&#10;- 신고의 location 넣는 함수 : setLocation &#10;- 위치의 declaration 리스트에 넣는 함수 : addDeclaration">
+      <created>1693202241733</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1693202241733</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Feat : locaion Id로 신고 List 반환하는 기능 추가&#10;&#10;- 장소 검색 후 해당 장소의 신고 리스트를 반환해줘야하기 때문이 해당 기능을 추가함.&#10;- ListDeclarationResponseDto 추가">
+      <created>1693205982691</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1693205982691</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Fix : LocationService에서 findByCoor함수명을 checkLocationIsExist로 수정&#10;&#10;- DeclarationService에서 새로 추가되는 신고의 위치가 Null인지 아닌지 확인해주는 함수기 때문에 수정함.">
+      <created>1693206748224</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1693206748224</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Feat : 도로명주소로 특정 Location 정보 가져오기 기능 추가">
+      <created>1693207679414</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1693207679414</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Feat : 현재 위치 기준(위도,경도) 반경 500m 신고 내역 가져오는 기능 추가&#10;&#10;- 쿼리문 : &quot;select loc from Location loc where ST_Distance_Sphere(POINT(:longitude,:latitude), POINT(loc.longitude,loc.latitude)) &lt;= 500&quot;&#10;- 반경 범위는 수정 가능&#10;- local mysql 추가">
+      <created>1693282695447</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1693282695447</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Feat : 현재 위치 기준(위도,경도) 반경 500m 신고 내역 가져오는 기능 추가&#10;&#10;- user not Found error code 추가&#10;- 신고 저장할 때 accessToken받아서 User 객체에 신고 내역 추가해줌.&#10;- User Service에 saveDeclaration 추가&#10;- User에 addDeclaration 추가 &#10;- Declaration객체에는 User 지정 안함. (신고 id로 user을 찾을 일이 없다고 판단)">
+      <created>1693286058778</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1693286058778</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Fix : user에서 신고내역 가져오기 수정&#10;&#10;- 임의로 userid로 test진행">
+      <created>1693295275839</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1693295275839</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Refactor : 필요없는 코드 삭제">
+      <created>1693296540235</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1693296540235</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -217,7 +289,19 @@
     <MESSAGE value="feat: 신고 정보 모두 가져오기 기능 추가" />
     <MESSAGE value="Feat: ExceptionHandler 기능 추가 &#10;&#10;기본적인 exception과 찾는 신고정보가 없을 때의 customexcepion 추가함.&#10;추가적인 customexception이 필요하다면 ErrorCode에 추가하면 됨." />
     <MESSAGE value="Feat: 신고 정보 삭제하기, 수정하기 기능 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="Feat: 신고 정보 삭제하기, 수정하기 기능 추가" />
+    <MESSAGE value="Comment : 신고 controller 필요한 주석 추가" />
+    <MESSAGE value="Feat : Location Dto, Repository 추가&#10;&#10;디버그를 위한 저장된 Location 정보 가져오는 기능 추가" />
+    <MESSAGE value="Fix : 신고 저장 시 같은 위치 중복 생성 수정 &#10;&#10;- 신고 저장할 때 항상 새로운 location을 할당 받아 저장하는 것을 위도/경도 기반으로 같은 위치가 없다면 새로 생성, 있다면 거기 신고 리스트에 신고 추가&#10;- 신고의 location 넣는 함수 : setLocation &#10;- 위치의 declaration 리스트에 넣는 함수 : addDeclaration" />
+    <MESSAGE value="Fix : 신고 저장 시 같은 위치 중복 생성 수정 &#10;&#10;- 신고 저장할 때 항상 새로운 location을 할당 받아 저장하는 것을 위도/경도 기반으로 같은 위치가 없다면 새로 생성, 있다면 거기 신고 리스트에 신고 추가 (Optional 사용)&#10;- 신고의 location 넣는 함수 : setLocation &#10;- 위치의 declaration 리스트에 넣는 함수 : addDeclaration" />
+    <MESSAGE value="Feat : locaion Id로 신고 List 반환하는 기능 추가&#10;&#10;- 장소 검색 후 해당 장소의 신고 리스트를 반환해줘야하기 때문이 해당 기능을 추가함.&#10;- ListDeclarationResponseDto 추가" />
+    <MESSAGE value="Fix : LocationService에서 findByCoor함수명을 checkLocationIsExist로 수정&#10;&#10;- DeclarationService에서 새로 추가되는 신고의 위치가 Null인지 아닌지 확인해주는 함수기 때문에 수정함." />
+    <MESSAGE value="Feat : 도로명주소로 특정 Location 정보 가져오기 기능 추가" />
+    <MESSAGE value="Feat : 현재 위치 기준(위도,경도) 반경 500m 신고 내역 가져오는 기능 추가&#10;&#10;- 쿼리문 : &quot;select loc from Location loc where ST_Distance_Sphere(POINT(:longitude,:latitude), POINT(loc.longitude,loc.latitude)) &lt;= 500&quot;&#10;- 반경 범위는 수정 가능" />
+    <MESSAGE value="Feat : 현재 위치 기준(위도,경도) 반경 500m 신고 내역 가져오는 기능 추가&#10;&#10;- 쿼리문 : &quot;select loc from Location loc where ST_Distance_Sphere(POINT(:longitude,:latitude), POINT(loc.longitude,loc.latitude)) &lt;= 500&quot;&#10;- 반경 범위는 수정 가능&#10;- local mysql 추가" />
+    <MESSAGE value="Feat : 현재 위치 기준(위도,경도) 반경 500m 신고 내역 가져오는 기능 추가&#10;&#10;- user not Found error code 추가&#10;- 신고 저장할 때 accessToken받아서 User 객체에 신고 내역 추가해줌.&#10;- User Service에 saveDeclaration 추가&#10;- User에 addDeclaration 추가 &#10;- Declaration객체에는 User 지정 안함. (신고 id로 user을 찾을 일이 없다고 판단)" />
+    <MESSAGE value="Fix : user에서 신고내역 가져오기 수정&#10;&#10;- 임의로 userid로 test진행" />
+    <MESSAGE value="Refactor : 필요없는 코드 삭제" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor : 필요없는 코드 삭제" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
