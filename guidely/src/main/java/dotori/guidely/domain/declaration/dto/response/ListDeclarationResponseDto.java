@@ -7,7 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 
 @Data
-public class ListDclarationByLocationIdResponseDto { //신고 엔티티만 반
+public class ListDeclarationResponseDto { //신고 엔티티만 반
     private DeclarationCategory category;
     private RiskType risk; // LOW,MEDIUM,HIGH
     private String contents;
@@ -15,7 +15,7 @@ public class ListDclarationByLocationIdResponseDto { //신고 엔티티만 반
     private String specification;
 
     @Builder
-    public ListDclarationByLocationIdResponseDto(Declaration declaration) {
+    public ListDeclarationResponseDto(Declaration declaration) {
         this.category = declaration.getCategory();
         this.risk = declaration.getRisk();
         this.contents = declaration.getContents();

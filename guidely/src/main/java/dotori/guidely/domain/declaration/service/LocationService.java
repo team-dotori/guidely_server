@@ -2,7 +2,7 @@ package dotori.guidely.domain.declaration.service;
 
 import dotori.guidely.domain.declaration.domain.Declaration;
 import dotori.guidely.domain.declaration.domain.Location;
-import dotori.guidely.domain.declaration.dto.response.ListDclarationByLocationIdResponseDto;
+import dotori.guidely.domain.declaration.dto.response.ListDeclarationResponseDto;
 import dotori.guidely.domain.declaration.dto.response.LocationResponseDto;
 import dotori.guidely.domain.declaration.repository.LocationRepository;
 import dotori.guidely.exception.CustomException;
@@ -41,12 +41,12 @@ public class LocationService {
                         .orElseThrow(() -> new CustomException(ErrorCode.LOCATION_NOT_FOUND)))
                 .build();
     }
-    public List<ListDclarationByLocationIdResponseDto> findById(long id){
+    public List<ListDeclarationResponseDto> findById(long id){
         Location location = locationRepository.findById(id)
                 .orElseThrow(() -> new CustomException(ErrorCode.LOCATION_NOT_FOUND));
-        List<ListDclarationByLocationIdResponseDto> declarationDtos = new ArrayList<>();
+        List<ListDeclarationResponseDto> declarationDtos = new ArrayList<>();
         for(Declaration declaration: location.getDeclarationList()){
-            declarationDtos.add(ListDclarationByLocationIdResponseDto.builder().declaration(declaration).build());
+            declarationDtos.add(ListDeclarationResponseDto.builder().declaration(declaration).build());
         }
         return declarationDtos;
     }
@@ -58,5 +58,14 @@ public class LocationService {
             locationResponseDtos.add(LocationResponseDto.builder().location(location).build());
         }
         return locationResponseDtos;
+    }
+
+    public List<ListDeclarationResponseDto> findByBuildingName(String buildingName){
+        Location location = locationRepository.findBybuildingName(buildingName);
+        List<ListDeclarationResponseDto> declarationDtos = new ArrayList<>();
+        for(Declaration declaration: location.getDeclarationList()){
+            declarationDtos.add(ListDeclarationResponseDto.builder().declaration(declaration).build());
+        }
+        return declarationDtos;
     }
 }
