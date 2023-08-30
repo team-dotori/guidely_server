@@ -42,9 +42,12 @@ public class DeclarationService {
                     .build();
             declarationEntity.setLocation(newLocation);
             newLocation.addDeclaration(declarationEntity);
+            newLocation.addCountDeclation();
         }else{
             declarationEntity.setLocation(location.orElseThrow(()-> new CustomException(ErrorCode.INTERNAL_SERVER_ERROR)));
-            location.get().getDeclarationList().add(declarationEntity);
+            location.get().addDeclaration(declarationEntity);
+//            location.get().getDeclarationList().add(declarationEntity);
+            location.get().addCountDeclation();
         }
         declarationEntity.setUser(user);
         user.addDeclaration(declarationEntity);
@@ -64,14 +67,21 @@ public class DeclarationService {
         return responseDtos;
     }
     @Transactional
-    public Long delete(Long id){
+    public long delete(long id){
         declarationRepository.delete(declarationRepository.findById(id).orElseThrow(() -> new CustomException(ErrorCode.DECLARATION_NOT_FOUND)));
         return id;
     }
     @Transactional
-    public Long update(Long id,DeclarationDto params){
+    public long update(long id,DeclarationDto params){
         Declaration declaration = declarationRepository.findById(id).orElseThrow(() -> new CustomException(ErrorCode.DECLARATION_NOT_FOUND));
         declaration.update(params.getRisk(),params.getContents(),params.getImgUrl());
+        return id;
+    }
+
+    @Transactional
+    public long addLike(long id) {
+        Declaration declaration = declarationRepository.findById(id).orElseThrow(() -> new CustomException(ErrorCode.DECLARATION_NOT_FOUND));
+        declaration.addLike();
         return id;
     }
 }

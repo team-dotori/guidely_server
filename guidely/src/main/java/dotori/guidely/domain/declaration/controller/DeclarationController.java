@@ -51,10 +51,16 @@ public class DeclarationController {
      * 신고 정보 수정하기
      */
     @PatchMapping("{id}")
-    public ResponseEntity<Long> update(@PathVariable Long id,@RequestBody DeclarationDto declarationDto){
+    public ResponseEntity<Long> update(@PathVariable long id,@RequestBody DeclarationDto declarationDto){
         return ResponseEntity.ok(declarationService.update(id,declarationDto));
     }
-
+    /**
+     * 신고 좋아요
+     */
+    @PatchMapping("/like/{id}")
+    public ResponseEntity<Long> addLike(@PathVariable long id){
+        return ResponseEntity.ok(declarationService.addLike(id));
+    }
     // TODO : User Id로 Location 참조기능
 
 }

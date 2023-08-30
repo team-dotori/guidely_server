@@ -27,6 +27,7 @@ public class Location {
 
     private String buildingName;
 
+    private int countDeclaration;
     @Enumerated(EnumType.STRING)
     private LocationType type;
 
@@ -36,6 +37,9 @@ public class Location {
 
     public void addDeclaration(Declaration declaration){ //편의 메소드
         this.declarationList.add(declaration);
+    }
+    public void addCountDeclation(){
+        this.countDeclaration +=1;
     }
     @Builder
     public Location(@NonNull double latitude, @NonNull double longitude, @NonNull String address, String buildingName, LocationType type) {

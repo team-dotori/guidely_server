@@ -12,6 +12,8 @@ public class LocationResponseDto {
     private double longitude;
     private String address; //도로명 주소
     private String buildingName;
+
+    private int countDeclaration;
     private LocationType type;
 
 
@@ -23,5 +25,6 @@ public class LocationResponseDto {
         this.address = location.getAddress();
         this.buildingName = location.getBuildingName();
         this.type = location.getType();
+        this.countDeclaration = location.getCountDeclaration();
     }
 }

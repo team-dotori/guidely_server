@@ -20,6 +20,7 @@ public class DeclarationDto {
     private String address; //도로명 주소
     private String buildingName;
     private LocationType type;
+
     public Declaration toEntity(){ //DTO에 필요한 부분을 빌더 패턴을 이용해 Entity를 만드는 일
         Declaration declaration = Declaration.builder()
                 .category(category)

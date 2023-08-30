@@ -33,6 +33,7 @@ public class Declaration {
     private int likeCount;
 
     private String imgUrl;
+
 // 상세 분류, 이미지url
     @ManyToOne(cascade = CascadeType.ALL)
     @JsonManagedReference
@@ -74,5 +75,8 @@ public class Declaration {
         this.risk = risk;
         this.contents = contents;
         this.imgUrl = imgUrl;
+    }
+    public void addLike(){
+        this.likeCount +=1;
     }
 }
