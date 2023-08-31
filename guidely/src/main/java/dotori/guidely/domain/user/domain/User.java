@@ -1,6 +1,7 @@
 package dotori.guidely.domain.user.domain;
 
 import dotori.guidely.domain.oauth.domain.OAuthProvider;
+import dotori.guidely.global.BaseTime;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -8,12 +9,12 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Data
 @Entity
-@Getter
 @Table(name = "users")
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class User extends BaseTime {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,20 +26,9 @@ public class User {
     @Column
     private String nickname;
 
-    @CreatedDate
-    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
-    private LocalDateTime createdDate;
-
     @Enumerated(EnumType.STRING)
-    private UserType type = UserType.NEW;
+    private UserType type;
 
     @Enumerated(EnumType.STRING)
     private OAuthProvider oAuthProvider;
-
-    @Builder
-    public User(String email, String nickname, OAuthProvider oAuthProvider) {
-        this.email = email;
-        this.nickname = nickname;
-        this.oAuthProvider = oAuthProvider;
-    }
 }

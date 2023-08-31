@@ -1,6 +1,6 @@
 package dotori.guidely.domain.comment.domain;
 
-import dotori.guidely.domain.board.domain.Board;
+import dotori.guidely.domain.board.domain.TextPost;
 import dotori.guidely.domain.user.domain.User;
 import dotori.guidely.global.BaseTime;
 import lombok.AllArgsConstructor;
@@ -21,8 +21,8 @@ public class Comment extends BaseTime {
     private Long commentId;
 
     @ManyToOne
-    @JoinColumn(name = "boardId")
-    private Board board;
+    @JoinColumn(name = "textPostId")
+    private TextPost textPost;
 
     @ManyToOne
     @JoinColumn(name = "userId")

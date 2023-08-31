@@ -6,6 +6,7 @@ import dotori.guidely.domain.oauth.domain.OAuthInfoResponse;
 import dotori.guidely.domain.oauth.domain.OAuthProvider;
 import dotori.guidely.domain.oauth.dto.AuthTokenDto;
 import dotori.guidely.domain.user.domain.User;
+import dotori.guidely.domain.user.domain.UserType;
 import dotori.guidely.domain.user.dto.UserDto;
 import dotori.guidely.domain.user.repository.UserRepository;
 import dotori.guidely.global.utils.jwt.AuthTokensGenerator;
@@ -45,16 +46,14 @@ public class OAuthService {
     }
 
     private Long newUser(OAuthInfoResponse oAuthInfoResponse) {
-        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
-
         UserDto userDto = UserDto.builder()
                 .email(oAuthInfoResponse.getEmail())
                 .nickname(oAuthInfoResponse.getNickname())
+                .type(UserType.NEW)
                 .oAuthProvider(oAuthInfoResponse.getOAuthProvider())
                 .build();
 
         User user = modelMapper.map(userDto, User.class);
-
         return userRepository.save(user).getUserId();
     }
 
