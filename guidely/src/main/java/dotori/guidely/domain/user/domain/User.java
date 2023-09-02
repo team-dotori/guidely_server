@@ -1,14 +1,15 @@
 package dotori.guidely.domain.user.domain;
 
+import dotori.guidely.domain.post.domain.Post;
+import dotori.guidely.domain.heart.domain.Heart;
 import dotori.guidely.domain.oauth.domain.OAuthProvider;
 import dotori.guidely.global.BaseTime;
 import lombok.*;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.util.List;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
 @Table(name = "users")
@@ -31,4 +32,10 @@ public class User extends BaseTime {
 
     @Enumerated(EnumType.STRING)
     private OAuthProvider oAuthProvider;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Post> posts;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Heart> hearts;
 }
