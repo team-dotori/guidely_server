@@ -46,7 +46,6 @@ public class DeclarationService {
         }else{
             declarationEntity.setLocation(location.orElseThrow(()-> new CustomException(ErrorCode.INTERNAL_SERVER_ERROR)));
             location.get().addDeclaration(declarationEntity);
-//            location.get().getDeclarationList().add(declarationEntity);
             location.get().addCountDeclation();
         }
         declarationEntity.setUser(user);

@@ -7,15 +7,18 @@ import lombok.Builder;
 import lombok.Data;
 
 @Data
-public class ListDeclarationResponseDto { //신고 엔티티만 반
+public class ListDeclarationResponseDto { //신고 엔티티만
+    private Long id;
     private DeclarationCategory category;
     private RiskType risk; // LOW,MEDIUM,HIGH
     private String contents;
+    private int likeCount;
     private String imgUrl;
     private String specification;
 
     @Builder
     public ListDeclarationResponseDto(Declaration declaration) {
+        this.id = declaration.getDeclarationId();
         this.category = declaration.getCategory();
         this.risk = declaration.getRisk();
         this.contents = declaration.getContents();

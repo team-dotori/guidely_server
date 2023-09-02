@@ -22,14 +22,14 @@ public class DeclarationDto {
     private LocationType type;
 
     public Declaration toEntity(){ //DTO에 필요한 부분을 빌더 패턴을 이용해 Entity를 만드는 일
-        Declaration declaration = Declaration.builder()
+        Declaration declarationEntity = Declaration.builder()
                 .category(category)
                 .contents(contents)
                 .imgUrl(imgUrl)
                 .risk(risk)
                 .specification(specification)
                 .build();
-        return declaration;
+        return declarationEntity;
     }
 
 }

@@ -22,7 +22,7 @@ public class DeclarationController {
      * 신고 정보 저장
      */
     @PostMapping("{id}")
-    public ResponseEntity<DeclarationResponseDto> save(@PathVariable long id,@RequestBody DeclarationDto declarationDto){ //@RequestHeader(value="accessToken") String accessToken
+    public ResponseEntity<DeclarationResponseDto> save(@PathVariable Long id,@RequestBody DeclarationDto declarationDto){ //@RequestHeader(value="accessToken") String accessToken
 //        Long userId = authTokensGenerator.extractUserId(accessToken);
 //        userService.saveDeclaration(userId,declarationDto); // user의 신고 리스트에 저장
 //        userService.saveDeclaration(id, declarationDto);// 임시
@@ -51,14 +51,14 @@ public class DeclarationController {
      * 신고 정보 수정하기
      */
     @PatchMapping("{id}")
-    public ResponseEntity<Long> update(@PathVariable long id,@RequestBody DeclarationDto declarationDto){
+    public ResponseEntity<Long> update(@PathVariable Long id,@RequestBody DeclarationDto declarationDto){
         return ResponseEntity.ok(declarationService.update(id,declarationDto));
     }
     /**
      * 신고 좋아요
      */
     @PatchMapping("/like/{id}")
-    public ResponseEntity<Long> addLike(@PathVariable long id){
+    public ResponseEntity<Long> addLike(@PathVariable Long id){
         return ResponseEntity.ok(declarationService.addLike(id));
     }
     // TODO : User Id로 Location 참조기능
