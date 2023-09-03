@@ -4,19 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2776cb80-a742-4097-a261-55818debcd46" name="Changes" comment="Fix : location ID로 신고 리스트 조회 시 신고 ID도 같이 반환되도록 수정&#10;&#10;- ListDeclarationResponseDto에서 id 필드 추가 및 생성자 추가 &#10;- +) 주석 처리한 거 제거&#10;&#10;Related to : #15">
-      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/badge/controller/BadgeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/badge/domain/Badge.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/badge/dto/BadgeDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/badge/repository/BadgeRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/badge/scheduler/CollectBadge.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/badge/service/BadgeService.java" afterDir="false" />
+    <list default="true" id="2776cb80-a742-4097-a261-55818debcd46" name="Changes" comment="Fix : userId 접근 -&gt; accessToken 접근으로 수정&#10;&#10;- 각 controller 단에서 유저 Id가 필요한 함수를 모두 header accessToken으로 수정&#10;&#10;Related to : #15">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/controller/DeclarationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/controller/DeclarationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/service/DeclarationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/service/DeclarationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/badge/controller/BadgeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/badge/controller/BadgeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/badge/service/BadgeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/badge/service/BadgeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/oauth/service/OAuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/oauth/service/OAuthService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/user/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/user/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/user/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/user/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/user/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/user/service/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,6 +133,7 @@
       <workItem from="1693566199618" duration="789000" />
       <workItem from="1693646046434" duration="3706000" />
       <workItem from="1693711495252" duration="21428000" />
+      <workItem from="1693741196161" duration="1328000" />
     </task>
     <task id="LOCAL-00001" summary="feat: 신고 엔티티 추가">
       <created>1692972982779</created>
@@ -259,7 +254,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693648359079</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Fix : userId 접근 -&gt; accessToken 접근으로 수정&#10;&#10;- 각 controller 단에서 유저 Id가 필요한 함수를 모두 header accessToken으로 수정&#10;&#10;Related to : #15">
+      <created>1693741175549</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1693741175549</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -328,7 +330,8 @@
     <MESSAGE value="Refactor : 필요없는 코드 삭제" />
     <MESSAGE value="Feat : building이름으로 신고리스트 찾아오는 기능 추가&#10;&#10;- 장애인용에서 신고 내역 찾기 기능 중 필요한 기능이라 판단하여 추가" />
     <MESSAGE value="Fix : location ID로 신고 리스트 조회 시 신고 ID도 같이 반환되도록 수정&#10;&#10;- ListDeclarationResponseDto에서 id 필드 추가 및 생성자 추가 &#10;- +) 주석 처리한 거 제거&#10;&#10;Related to : #15" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix : location ID로 신고 리스트 조회 시 신고 ID도 같이 반환되도록 수정&#10;&#10;- ListDeclarationResponseDto에서 id 필드 추가 및 생성자 추가 &#10;- +) 주석 처리한 거 제거&#10;&#10;Related to : #15" />
+    <MESSAGE value="Fix : userId 접근 -&gt; accessToken 접근으로 수정&#10;&#10;- 각 controller 단에서 유저 Id가 필요한 함수를 모두 header accessToken으로 수정&#10;&#10;Related to : #15" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix : userId 접근 -&gt; accessToken 접근으로 수정&#10;&#10;- 각 controller 단에서 유저 Id가 필요한 함수를 모두 header accessToken으로 수정&#10;&#10;Related to : #15" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

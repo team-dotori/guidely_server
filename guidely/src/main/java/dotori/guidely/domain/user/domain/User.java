@@ -57,18 +57,12 @@ public class User extends BaseTime {
     @JsonManagedReference
     private List<Badge> badges = new ArrayList<>();
 
-    @Builder
-    public User(String email, String nickname, OAuthProvider oAuthProvider) {
-        this.email = email;
-        this.nickname = nickname;
-        this.oAuthProvider = oAuthProvider;
-    }
 
     public void addDeclaration(Declaration declaration){ //편의 메소드
         this.declarationList.add(declaration);
     }
 
-    public void addBadge(Badge badge){
-        this.badges.add(badge);
+    public void addBadge(List<Badge> badges){
+        this.badges = badges;
     }
 }
