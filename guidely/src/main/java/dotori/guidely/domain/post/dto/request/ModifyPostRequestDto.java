@@ -15,9 +15,6 @@ public class ModifyPostRequestDto {
     @Schema(description = "게시글 유형", example = "TEXT")
     private PostType type;
 
-    @Schema(description = "수정한 게시글 제목", example = "수정된 게시글 제목")
-    private String title;
-
     @Schema(description = "수정한 게시글 본문 내용", example = "수정된 게시글 내용")
     private String content;
 }

@@ -21,9 +21,6 @@ public class PostDto {
     @Schema(description = "작성자의 닉네임", example = "홍길동")
     private String nickname;
 
-    @Schema(description = "게시글 제목", example = "게시글 제목")
-    private String title;
-
     @Schema(description = "게시글 유형", example = "TEXT")
     private PostType type;
 
