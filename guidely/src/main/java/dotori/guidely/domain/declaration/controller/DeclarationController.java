@@ -61,6 +61,5 @@ public class DeclarationController {
     public ResponseEntity<Long> addLike(@PathVariable Long id){
         return ResponseEntity.ok(declarationService.addLike(id));
     }
-    // TODO : User Id로 Location 참조기능
 
 }

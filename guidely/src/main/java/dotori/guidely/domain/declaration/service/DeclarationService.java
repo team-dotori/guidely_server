@@ -1,5 +1,6 @@
 package dotori.guidely.domain.declaration.service;
 
+import dotori.guidely.domain.badge.scheduler.CollectBadge;
 import dotori.guidely.domain.declaration.domain.Declaration;
 import dotori.guidely.domain.declaration.domain.Location;
 import dotori.guidely.domain.declaration.dto.DeclarationDto;
@@ -51,7 +52,7 @@ public class DeclarationService {
         declarationEntity.setUser(user);
         user.addDeclaration(declarationEntity);
         Declaration declaration = declarationRepository.save(declarationEntity);
-
+        checkCount(user);
         return modelMapper.map(declaration,DeclarationResponseDto.class);
 
     }
@@ -82,5 +83,10 @@ public class DeclarationService {
         Declaration declaration = declarationRepository.findById(id).orElseThrow(() -> new CustomException(ErrorCode.DECLARATION_NOT_FOUND));
         declaration.addLike();
         return id;
+    }
+
+    public void checkCount(User user){
+        CollectBadge collectBadge = new CollectBadge(user,5,user.getDeclarationList().size(),0);
+        collectBadge.detectAndExecute();
     }
 }

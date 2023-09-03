@@ -4,14 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2776cb80-a742-4097-a261-55818debcd46" name="Changes" comment="Refactor : 필요없는 코드 삭제">
+    <list default="true" id="2776cb80-a742-4097-a261-55818debcd46" name="Changes" comment="Fix : location ID로 신고 리스트 조회 시 신고 ID도 같이 반환되도록 수정&#10;&#10;- ListDeclarationResponseDto에서 id 필드 추가 및 생성자 추가 &#10;- +) 주석 처리한 거 제거&#10;&#10;Related to : #15">
+      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/badge/controller/BadgeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/badge/domain/Badge.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/badge/dto/BadgeDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/badge/repository/BadgeRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/badge/scheduler/CollectBadge.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/badge/service/BadgeService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/controller/DeclarationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/controller/DeclarationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/domain/Declaration.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/domain/Declaration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/domain/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/domain/Location.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/dto/DeclarationDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/dto/DeclarationDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/dto/response/LocationResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/dto/response/LocationResponseDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/service/DeclarationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/service/DeclarationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/user/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/user/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/user/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/user/domain/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/user/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/user/service/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,13 +73,15 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/heeming/Desktop/도토리/guidely/src/main/java/dotori/guidely/domain&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/heeming/Desktop/도토리/guidely/src/main/java/dotori/guidely/domain/badge&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.import&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;ca96123b3e864369361dad67a0a28dca&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/badge" />
       <recent name="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -128,6 +135,10 @@
       <workItem from="1693203016668" duration="14265000" />
       <workItem from="1693282791036" duration="4485000" />
       <workItem from="1693287300941" duration="13795000" />
+      <workItem from="1693376695870" duration="23344000" />
+      <workItem from="1693566199618" duration="789000" />
+      <workItem from="1693646046434" duration="3706000" />
+      <workItem from="1693711495252" duration="21428000" />
     </task>
     <task id="LOCAL-00001" summary="feat: 신고 엔티티 추가">
       <created>1692972982779</created>
@@ -234,7 +245,21 @@
       <option name="project" value="LOCAL" />
       <updated>1693296540235</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Feat : building이름으로 신고리스트 찾아오는 기능 추가&#10;&#10;- 장애인용에서 신고 내역 찾기 기능 중 필요한 기능이라 판단하여 추가">
+      <created>1693376665415</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1693376665415</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Fix : location ID로 신고 리스트 조회 시 신고 ID도 같이 반환되도록 수정&#10;&#10;- ListDeclarationResponseDto에서 id 필드 추가 및 생성자 추가 &#10;- +) 주석 처리한 거 제거&#10;&#10;Related to : #15">
+      <created>1693648359079</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1693648359079</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -251,7 +276,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/feature/#8" />
+                        <option value="feature/#15" />
                       </list>
                     </value>
                   </entry>
@@ -301,7 +326,9 @@
     <MESSAGE value="Feat : 현재 위치 기준(위도,경도) 반경 500m 신고 내역 가져오는 기능 추가&#10;&#10;- user not Found error code 추가&#10;- 신고 저장할 때 accessToken받아서 User 객체에 신고 내역 추가해줌.&#10;- User Service에 saveDeclaration 추가&#10;- User에 addDeclaration 추가 &#10;- Declaration객체에는 User 지정 안함. (신고 id로 user을 찾을 일이 없다고 판단)" />
     <MESSAGE value="Fix : user에서 신고내역 가져오기 수정&#10;&#10;- 임의로 userid로 test진행" />
     <MESSAGE value="Refactor : 필요없는 코드 삭제" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor : 필요없는 코드 삭제" />
+    <MESSAGE value="Feat : building이름으로 신고리스트 찾아오는 기능 추가&#10;&#10;- 장애인용에서 신고 내역 찾기 기능 중 필요한 기능이라 판단하여 추가" />
+    <MESSAGE value="Fix : location ID로 신고 리스트 조회 시 신고 ID도 같이 반환되도록 수정&#10;&#10;- ListDeclarationResponseDto에서 id 필드 추가 및 생성자 추가 &#10;- +) 주석 처리한 거 제거&#10;&#10;Related to : #15" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix : location ID로 신고 리스트 조회 시 신고 ID도 같이 반환되도록 수정&#10;&#10;- ListDeclarationResponseDto에서 id 필드 추가 및 생성자 추가 &#10;- +) 주석 처리한 거 제거&#10;&#10;Related to : #15" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
