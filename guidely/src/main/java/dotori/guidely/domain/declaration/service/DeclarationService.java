@@ -90,3 +90,4 @@ public class DeclarationService {
         collectBadge.detectAndExecute();
     }
 }
+

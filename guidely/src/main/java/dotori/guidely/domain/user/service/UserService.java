@@ -67,14 +67,10 @@ public class UserService {
         List<DeclarationResponseDto> declarationResponseDtos = new ArrayList<>();
 
         for(Declaration declaration : declarationList){
-            declarationResponseDtos.add(modelMapper.map(declaration,DeclarationResponseDto.class));
+            declarationResponseDtos.add(DeclarationResponseDto.builder().declaration(declaration).build());
         }
         return declarationResponseDtos;
     }
-//    public UserDto findUser(long userId){
-//        User user = userRepository.findByUserId(userId).orElseThrow(()->new CustomException(ErrorCode.USER_NOT_FOUND));
-//        return modelMapper.map(user,UserDto.class);
-//    }
     public List<BadgeDto> findBadges(long userId) {
         User user = userRepository.findByUserId(userId).orElseThrow(() -> new CustomException(ErrorCode.USER_NOT_FOUND));
         List<Badge> badgeList = user.getBadges();
