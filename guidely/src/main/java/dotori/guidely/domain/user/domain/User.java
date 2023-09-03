@@ -3,16 +3,17 @@ package dotori.guidely.domain.user.domain;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import dotori.guidely.domain.badge.domain.Badge;
 import dotori.guidely.domain.declaration.domain.Declaration;
+import dotori.guidely.domain.heart.domain.Heart;
 import dotori.guidely.domain.oauth.domain.OAuthProvider;
+import dotori.guidely.domain.post.domain.Post;
+import dotori.guidely.global.BaseTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.format.annotation.DateTimeFormat;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +22,8 @@ import java.util.List;
 @Table(name = "users")
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+@SuperBuilder
+public class User extends BaseTime {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,16 +35,19 @@ public class User {
     @Column
     private String nickname;
 
-    @CreatedDate
-    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
-    private LocalDateTime createdDate;
-
     @Enumerated(EnumType.STRING)
-    private UserType type = UserType.NEW;
+    private UserType type;
 
     @Enumerated(EnumType.STRING)
     private OAuthProvider oAuthProvider;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Post> posts;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Heart> hearts;
+
+    @Builder.Default
     @OneToMany(mappedBy = "user")
     @JsonManagedReference
     private List<Declaration> declarationList=new ArrayList<>();
