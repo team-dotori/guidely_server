@@ -10,6 +10,8 @@ import dotori.guidely.domain.post.repository.PostContentRepository;
 import dotori.guidely.domain.post.repository.PostRepository;
 import dotori.guidely.domain.user.domain.User;
 import dotori.guidely.domain.user.repository.UserRepository;
+import dotori.guidely.exception.CustomException;
+import dotori.guidely.exception.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -29,10 +31,9 @@ public class PostService {
 
     // 단일 텍스트 게시글 생성
     @Transactional
-    public Long createTextPost(TextPostRequestDto request, Long userId) {
-        // TODO: userException 추가
+    public PostResponseDto createTextPost(TextPostRequestDto request, Long userId) {
         User user = userRepository.findByUserId(userId)
-                .orElseThrow(RuntimeException::new);
+                .orElseThrow(() -> new CustomException(ErrorCode.USER_NOT_FOUND));
 
         // 텍스트 게시글 내용
         TextPostContent textContent = TextPostContent.builder()
@@ -42,7 +43,6 @@ public class PostService {
         // 텍스트 게시물 생성
         Post textPost = Post.builder()
                     .user(user)
-                    .title(request.getTitle())
                     .type(PostType.TEXT)
                     .content(textContent)
                     .likeCount(0)
@@ -50,15 +50,14 @@ public class PostService {
 
         postRepository.save(textPost);
 
-        return textPost.getPostId();
+        return toDto(textPost);
     }
 
     // 음성 게시글 생성
     @Transactional
-    public Long createVoicePost(VoicePostRequestDto request, Long userId) {
-        // TODO: userException 추가
+    public PostResponseDto createVoicePost(VoicePostRequestDto request, Long userId) {
         User user = userRepository.findByUserId(userId)
-                .orElseThrow(RuntimeException::new);
+                .orElseThrow(() -> new CustomException(ErrorCode.USER_NOT_FOUND));
 
         // 음성 파일의 경로
         VoicePostContent voiceContent = VoicePostContent.builder()
@@ -68,7 +67,6 @@ public class PostService {
         // 음성 게시물 생성
         Post voicePost = Post.builder()
                     .user(user)
-                    .title(request.getTitle())
                     .type(PostType.VOICE)
                     .content(voiceContent)
                     .likeCount(0)
@@ -76,21 +74,18 @@ public class PostService {
 
         postRepository.save(voicePost);
 
-        return voicePost.getPostId();
+        return toDto(voicePost);
     }
 
     // 게시글 ID로 게시글 조회
     @Transactional
     public PostDto findByPostId(Long postId) {
-
-        // TODO: Add Post Exception Handler
         Post post = postRepository.findByPostId(postId)
-                .orElseThrow(RuntimeException::new);
+                .orElseThrow(() -> new CustomException(ErrorCode.POST_NOT_FOUND));
 
         PostDto response = PostDto.builder()
                     .postId(post.getPostId())
                     .nickname(post.getUser().getNickname())
-                    .title(post.getTitle())
                     .type(post.getType())
                     .content(post.getContent())
                     .likeCount(post.getLikeCount())
@@ -105,15 +100,7 @@ public class PostService {
         List<PostResponseDto> responses = new ArrayList<>();
 
         for (Post post : posts) {
-            responses.add(PostResponseDto.builder()
-                    .postId(post.getPostId())
-                    .nickname(post.getUser().getNickname())
-                    .title(post.getTitle())
-                    .type(post.getType())
-                    .content(post.getContent())
-                    .likeCount(post.getLikeCount())
-                    .build()
-            );
+            responses.add(toDto(post));
         }
 
         return responses;
@@ -127,15 +114,7 @@ public class PostService {
         List<PostResponseDto> responses = new ArrayList<>();
 
         for (Post post : posts) {
-            responses.add(PostResponseDto.builder()
-                    .postId(post.getPostId())
-                    .nickname(post.getUser().getNickname())
-                    .title(post.getTitle())
-                    .type(post.getType())
-                    .content(post.getContent())
-                    .likeCount(post.getLikeCount())
-                    .build()
-            );
+            responses.add(toDto(post));
         }
 
         return responses;
@@ -150,32 +129,33 @@ public class PostService {
 
     @Transactional
     public PostResponseDto modifyPost(ModifyPostRequestDto request, Long postId) {
-        // TODO: Add Post Exception Handler
         Post post = postRepository.findByPostId(postId)
-                .orElseThrow(RuntimeException::new);
+                .orElseThrow(() -> new CustomException(ErrorCode.POST_NOT_FOUND));
 
         Long contentId = post.getContent().getPostContentId();
         if (request.getType() == PostType.TEXT) {
             TextPostContent textContent = contentRepository.findTextContentByPostContentId(contentId);
             textContent.update(request.getContent());
-            post.update(request.getTitle(), textContent);
+            post.update(textContent);
         }
         else{
             VoicePostContent voiceContent = contentRepository.findVoiceContentByPostContentId(contentId);
             voiceContent.update(request.getContent());
-            post.update(request.getTitle(), voiceContent);
+            post.update(voiceContent);
         }
 
-        PostResponseDto response = PostResponseDto.builder()
+        return toDto(post);
+    }
+
+    private static PostResponseDto toDto(Post post) {
+        return PostResponseDto.builder()
                 .postId(post.getPostId())
                 .nickname(post.getUser().getNickname())
-                .title(post.getTitle())
                 .type(post.getType())
                 .content(post.getContent())
                 .likeCount(post.getLikeCount())
+                .createdDate(post.getCreatedDate())
                 .build();
-
-        return response;
     }
 
 }

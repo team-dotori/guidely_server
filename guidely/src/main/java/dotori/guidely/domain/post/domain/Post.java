@@ -25,8 +25,6 @@ public class Post extends BaseTime{
     @JoinColumn(name = "userId")
     private User user;
 
-    private String title;
-
     @Enumerated(EnumType.STRING)
     private PostType type;
 
@@ -36,13 +34,11 @@ public class Post extends BaseTime{
 
     private int likeCount;
 
-    // TODO: fetch type 설정
     @OneToMany(mappedBy = "post", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     @OrderBy("commentId asc")
     private List<Comment> comments;
 
-    public void update(String title, PostContent content) {
-        this.title = title;
+    public void update(PostContent content) {
         this.content = content;
     }
 

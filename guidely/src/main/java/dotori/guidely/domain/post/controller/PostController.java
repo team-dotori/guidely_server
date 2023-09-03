@@ -27,43 +27,37 @@ import java.util.List;
 public class PostController {
 
     private final PostService postService;
-    private final UserRepository userRepository;
     private final AuthTokensGenerator authTokensGenerator;
     private final ModelMapper modelMapper;
 
     @Operation(summary = "텍스트 게시글 생성", description = "텍스트 게시글을 생성하는 메서드")
     @PostMapping("/text")
-    public ResponseEntity<String> createTextPost(@RequestBody TextPostRequestDto request,
+    public ResponseEntity<PostResponseDto> createTextPost(@RequestBody TextPostRequestDto request,
                                                  @RequestHeader(value = "accessToken") String accessToken){
         Long userId = authTokensGenerator.extractUserId(accessToken);
 
-        postService.createTextPost(request, userId);
+        PostResponseDto response = postService.createTextPost(request, userId);
 
-        // TODO : 반환값 설정
         return ResponseEntity
                 .status(HttpStatus.CREATED)
-                .body("ok");
+                .body(response);
     }
 
     @Operation(summary = "음성 게시글 생성", description = "음성 게시글을 생성하는 메서드")
     @PostMapping("/voice")
-    public ResponseEntity<String> createVoicePost(@RequestBody VoicePostRequestDto request,
+    public ResponseEntity<PostResponseDto> createVoicePost(@RequestBody VoicePostRequestDto request,
                                                  @RequestHeader(value = "accessToken") String accessToken){
         Long userId = authTokensGenerator.extractUserId(accessToken);
 
-        // TODO: Add User Exception Handler
-        userRepository.findByUserId(userId).orElseThrow(RuntimeException::new);
+        PostResponseDto response = postService.createVoicePost(request, userId);
 
-        postService.createVoicePost(request, userId);
-
-        // TODO : 반환값 설정
         return ResponseEntity
                 .status(HttpStatus.CREATED)
-                .body("ok");
+                .body(response);
     }
 
     @Operation(summary = "모든 게시글 조회", description = "생성된 모든 게시글을 조회하는 메서드")
-    @GetMapping("/all")
+    @GetMapping
     public ResponseEntity<List<PostResponseDto>> findAll() {
         List<PostResponseDto> responses = postService.findAll();
         return ResponseEntity

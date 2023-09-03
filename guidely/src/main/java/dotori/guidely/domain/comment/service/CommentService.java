@@ -12,6 +12,8 @@ import dotori.guidely.domain.comment.dto.response.CommentResponseDto;
 import dotori.guidely.domain.comment.repository.CommentRepository;
 import dotori.guidely.domain.user.domain.User;
 import dotori.guidely.domain.user.repository.UserRepository;
+import dotori.guidely.exception.CustomException;
+import dotori.guidely.exception.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -32,13 +34,11 @@ public class CommentService {
     // 텍스트 댓글 생성
     @Transactional
     public CommentDto creatTextComment(CommentRequestDto request, Long postId, Long userId) {
-        // TODO: Add postException
         Post post = postRepository.findById(postId)
-                .orElseThrow(RuntimeException::new);
+                .orElseThrow(() -> new CustomException(ErrorCode.POST_NOT_FOUND));
 
-        // TODO: Add userException
         User user = userRepository.findById(userId)
-                .orElseThrow(RuntimeException::new);
+                .orElseThrow(() -> new CustomException(ErrorCode.USER_NOT_FOUND));
 
         // 텍스트 댓글 내용
         TextCommentContent textContent = TextCommentContent.builder()
@@ -61,13 +61,11 @@ public class CommentService {
     // 음성 댓글 생성
     @Transactional
     public CommentDto creatVoiceComment(CommentRequestDto request, Long postId, Long userId) {
-        // TODO: Add postException
         Post post = postRepository.findById(postId)
-                .orElseThrow(RuntimeException::new);
+                .orElseThrow(() -> new CustomException(ErrorCode.POST_NOT_FOUND));
 
-        // TODO: Add userException
         User user = userRepository.findById(userId)
-                .orElseThrow(RuntimeException::new);
+                .orElseThrow(() -> new CustomException(ErrorCode.USER_NOT_FOUND));
 
         // 음성 댓글 내용
         VoiceCommentContent voiceContent = VoiceCommentContent.builder()
@@ -88,9 +86,8 @@ public class CommentService {
 
     // postId에 해당하는 게시글의 모든 댓글 조회
     public List<CommentResponseDto> findAllByPostId(Long postId) {
-        // TODO: Add Post Exception Handler
         Post post = postRepository.findByPostId(postId)
-                .orElseThrow(RuntimeException::new);
+                .orElseThrow(() -> new CustomException(ErrorCode.POST_NOT_FOUND));
 
         List<Comment> comments = post.getComments();
 
@@ -108,9 +105,8 @@ public class CommentService {
 
     @Transactional
     public CommentResponseDto modifyComment(CommentRequestDto request, Long commentId) {
-        // TODO: Add Comment Exception Handler
         Comment comment = commentRepository.findById(commentId)
-                .orElseThrow(RuntimeException::new);
+                .orElseThrow(() -> new CustomException(ErrorCode.COMMENT_NOT_FOUND));
 
         Long contentId = comment.getContent().getCommentContentId();
         if (request.getType() == CommentType.TEXT) {

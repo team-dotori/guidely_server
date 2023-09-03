@@ -7,6 +7,8 @@ import dotori.guidely.domain.post.domain.Post;
 import dotori.guidely.domain.post.repository.PostRepository;
 import dotori.guidely.domain.user.domain.User;
 import dotori.guidely.domain.user.repository.UserRepository;
+import dotori.guidely.exception.CustomException;
+import dotori.guidely.exception.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,13 +25,11 @@ public class HeartService {
 
     @Transactional
     public void heart(HeartDto heartDto) {
-        // TODO : Add User Exception
         User user = userRepository.findByUserId(heartDto.getUserId())
-                .orElseThrow(RuntimeException::new);
+                .orElseThrow(() -> new CustomException(ErrorCode.USER_NOT_FOUND));
 
-        // TODO: Add Heart Exception -> 이미 좋아요된 것. ALREADY_HEARTED
         if(heartRepository.findByUserAndPostId(user, heartDto.getPostId()).isPresent()){
-            throw new RuntimeException();
+            throw new CustomException(ErrorCode.ALREADY_HEARTED);
         }
 
         Heart heart = Heart.builder()
@@ -44,15 +44,13 @@ public class HeartService {
 
     @Transactional
     public void unHeart(HeartDto heartDto) {
-        // TODO : Add User Exception
         User user = userRepository.findByUserId(heartDto.getUserId())
-                .orElseThrow(RuntimeException::new);
+                .orElseThrow(() -> new CustomException(ErrorCode.USER_NOT_FOUND));
 
         Optional<Heart> heart = heartRepository.findByUserAndPostId(user, heartDto.getPostId());
 
-        // TODO : "HEART_NOT_FOUND" error
         if (heart.isEmpty()) {
-            throw new RuntimeException();
+            throw new CustomException(ErrorCode.HEART_NOT_FOUND);
         }
 
         heartRepository.delete(heart.get());
@@ -61,10 +59,8 @@ public class HeartService {
     }
 
     private void updateHeartCount(Long postId, int plusOrMinus) {
-
-        // TODO: Add post exception
         Post post = postRepository.findById(postId)
-                .orElseThrow(RuntimeException::new);
+                .orElseThrow(() -> new CustomException(ErrorCode.POST_NOT_FOUND));
 
         post.updateHeartCount(plusOrMinus);
     }
