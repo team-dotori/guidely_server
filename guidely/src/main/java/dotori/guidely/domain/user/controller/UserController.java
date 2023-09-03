@@ -40,19 +40,18 @@ public class UserController {
                 .status(HttpStatus.OK)
                 .body(type);
     }
-    @GetMapping("/badges/{id}")
-    public ResponseEntity<List<BadgeDto>> findBages(@PathVariable long id){
-        return ResponseEntity.ok(userService.findBadges(id));
+    @GetMapping("/badges")
+    public ResponseEntity<List<BadgeDto>> findBages(@RequestHeader(value = "accessToken") String accessToken){
+        Long userId = authTokensGenerator.extractUserId(accessToken);
+        return ResponseEntity.ok(userService.findBadges(userId));
     }
     /**
      * user Id 신고 정보 가져오기
      */
-    @GetMapping("/declarations/{id}")
-    public ResponseEntity<List<DeclarationResponseDto>> findByUserId(@PathVariable long id){ // @RequestHeader(value = "accessToken") String accessToken
-        //Long userId = authTokensGenerator.extractUserId(accessToken);
-        //return ResponseEntity.ok(userService.findDeclarationList(userId));
-
-        return ResponseEntity.ok(userService.findDeclarationList(id));
+    @GetMapping("/declarations")
+    public ResponseEntity<List<DeclarationResponseDto>> findByUserId(@RequestHeader(value = "accessToken") String accessToken){
+        Long userId = authTokensGenerator.extractUserId(accessToken);
+        return ResponseEntity.ok(userService.findDeclarationList(userId));
 
     }
 }

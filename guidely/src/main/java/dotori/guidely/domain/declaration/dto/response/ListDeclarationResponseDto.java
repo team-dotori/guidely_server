@@ -6,6 +6,8 @@ import dotori.guidely.domain.declaration.domain.RiskType;
 import lombok.Builder;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 public class ListDeclarationResponseDto { //신고 엔티티만
     private Long id;
@@ -16,6 +18,8 @@ public class ListDeclarationResponseDto { //신고 엔티티만
     private String imgUrl;
     private String specification;
 
+    private LocalDateTime createdDate;
+
     @Builder
     public ListDeclarationResponseDto(Declaration declaration) {
         this.id = declaration.getDeclarationId();
@@ -24,5 +28,6 @@ public class ListDeclarationResponseDto { //신고 엔티티만
         this.contents = declaration.getContents();
         this.imgUrl = declaration.getImgUrl();
         this.specification = declaration.getSpecification();
+        this.createdDate = declaration.getCreatedDate();
     }
 }

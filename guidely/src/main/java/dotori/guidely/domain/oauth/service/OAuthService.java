@@ -1,5 +1,6 @@
 package dotori.guidely.domain.oauth.service;
 
+import dotori.guidely.domain.badge.service.BadgeService;
 import dotori.guidely.domain.oauth.OAuthApiClient;
 import dotori.guidely.domain.oauth.OAuthLoginParams;
 import dotori.guidely.domain.oauth.domain.OAuthInfoResponse;
@@ -7,14 +8,10 @@ import dotori.guidely.domain.oauth.domain.OAuthProvider;
 import dotori.guidely.domain.oauth.dto.AuthTokenDto;
 import dotori.guidely.domain.user.domain.User;
 import dotori.guidely.domain.user.domain.UserType;
-import dotori.guidely.domain.user.dto.UserDto;
 import dotori.guidely.domain.user.repository.UserRepository;
 import dotori.guidely.global.utils.jwt.AuthTokensGenerator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.modelmapper.ModelMapper;
-import org.modelmapper.convention.MatchingStrategies;
-import org.modelmapper.spi.MatchingStrategy;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +28,8 @@ public class OAuthService {
     private final UserRepository userRepository;
     private final AuthTokensGenerator authTokensGenerator;
     private final RequestOAuthInfo requestOAuthInfo;
+
+    private final BadgeService badgeService;
 
     public AuthTokenDto login(OAuthLoginParams params) {
         OAuthInfoResponse oAuthInfoResponse = requestOAuthInfo.request(params);
@@ -51,8 +50,9 @@ public class OAuthService {
                 .type(UserType.NEW)
                 .oAuthProvider(oAuthInfoResponse.getOAuthProvider())
                 .build();
-
-        return userRepository.save(user).getUserId();
+        Long userId = userRepository.save(user).getUserId();
+        badgeService.reset(user); //user badges reset
+        return userId;
     }
 
     @Component

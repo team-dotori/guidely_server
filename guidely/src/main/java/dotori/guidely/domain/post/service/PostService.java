@@ -1,5 +1,6 @@
 package dotori.guidely.domain.post.service;
 
+import dotori.guidely.domain.badge.scheduler.CollectBadge;
 import dotori.guidely.domain.post.domain.*;
 import dotori.guidely.domain.post.dto.PostDto;
 import dotori.guidely.domain.post.dto.request.ModifyPostRequestDto;
@@ -49,7 +50,7 @@ public class PostService {
                     .build();
 
         postRepository.save(textPost);
-
+        checkCount(user);
         return toDto(textPost);
     }
 
@@ -156,6 +157,10 @@ public class PostService {
                 .likeCount(post.getLikeCount())
                 .createdDate(post.getCreatedDate())
                 .build();
+    }
+    public void checkCount(User user){
+        CollectBadge collectBadge = new CollectBadge(user,5,user.getPosts().size(),0);
+        collectBadge.detectAndExecute();
     }
 
 }
