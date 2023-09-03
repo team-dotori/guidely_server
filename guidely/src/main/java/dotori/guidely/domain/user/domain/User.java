@@ -1,12 +1,19 @@
 package dotori.guidely.domain.user.domain;
 
-import dotori.guidely.domain.post.domain.Post;
-import dotori.guidely.domain.heart.domain.Heart;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import dotori.guidely.domain.declaration.domain.Declaration;
 import dotori.guidely.domain.oauth.domain.OAuthProvider;
-import dotori.guidely.global.BaseTime;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
@@ -33,9 +40,18 @@ public class User extends BaseTime {
     @Enumerated(EnumType.STRING)
     private OAuthProvider oAuthProvider;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Post> posts;
+    @OneToMany(mappedBy = "user")
+    @JsonManagedReference
+    private List<Declaration> declarationList=new ArrayList<>(); ;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Heart> hearts;
+    @Builder
+    public User(String email, String nickname, OAuthProvider oAuthProvider) {
+        this.email = email;
+        this.nickname = nickname;
+        this.oAuthProvider = oAuthProvider;
+    }
+
+    public void addDeclaration(Declaration declaration){ //편의 메소드
+        this.declarationList.add(declaration);
+    }
 }
