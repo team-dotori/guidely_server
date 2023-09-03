@@ -31,7 +31,6 @@ public class OAuthService {
     private final UserRepository userRepository;
     private final AuthTokensGenerator authTokensGenerator;
     private final RequestOAuthInfo requestOAuthInfo;
-    private final ModelMapper modelMapper;
 
     public AuthTokenDto login(OAuthLoginParams params) {
         OAuthInfoResponse oAuthInfoResponse = requestOAuthInfo.request(params);
@@ -46,14 +45,13 @@ public class OAuthService {
     }
 
     private Long newUser(OAuthInfoResponse oAuthInfoResponse) {
-        UserDto userDto = UserDto.builder()
+        User user = User.builder()
                 .email(oAuthInfoResponse.getEmail())
                 .nickname(oAuthInfoResponse.getNickname())
                 .type(UserType.NEW)
                 .oAuthProvider(oAuthInfoResponse.getOAuthProvider())
                 .build();
 
-        User user = modelMapper.map(userDto, User.class);
         return userRepository.save(user).getUserId();
     }
 
