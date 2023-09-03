@@ -1,5 +1,6 @@
 package dotori.guidely.domain.user.domain;
 
+
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import dotori.guidely.domain.declaration.domain.Declaration;
 import dotori.guidely.domain.oauth.domain.OAuthProvider;
@@ -15,12 +16,13 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+@EqualsAndHashCode(callSuper = true)
+@Data
 @Entity
-@Getter
 @Table(name = "users")
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class User extends BaseTime {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,12 +34,8 @@ public class User {
     @Column
     private String nickname;
 
-    @CreatedDate
-    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
-    private LocalDateTime createdDate;
-
     @Enumerated(EnumType.STRING)
-    private UserType type = UserType.NEW;
+    private UserType type;
 
     @Enumerated(EnumType.STRING)
     private OAuthProvider oAuthProvider;
