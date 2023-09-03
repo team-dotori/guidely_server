@@ -48,11 +48,9 @@ public class UserController {
      * user Id 신고 정보 가져오기
      */
     @GetMapping("/declarations/{id}")
-    public ResponseEntity<List<DeclarationResponseDto>> findByUserId(@PathVariable long id){ // @RequestHeader(value = "accessToken") String accessToken
-        //Long userId = authTokensGenerator.extractUserId(accessToken);
-        //return ResponseEntity.ok(userService.findDeclarationList(userId));
-
-        return ResponseEntity.ok(userService.findDeclarationList(id));
+    public ResponseEntity<List<DeclarationResponseDto>> findByUserId(@RequestHeader(value = "accessToken") String accessToken){
+        Long userId = authTokensGenerator.extractUserId(accessToken);
+        return ResponseEntity.ok(userService.findDeclarationList(userId));
 
     }
 }
