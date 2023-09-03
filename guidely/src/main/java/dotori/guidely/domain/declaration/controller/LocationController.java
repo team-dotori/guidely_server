@@ -1,6 +1,6 @@
 package dotori.guidely.domain.declaration.controller;
 
-import dotori.guidely.domain.declaration.dto.response.ListDclarationByLocationIdResponseDto;
+import dotori.guidely.domain.declaration.dto.response.ListDeclarationResponseDto;
 import dotori.guidely.domain.declaration.dto.response.LocationResponseDto;
 import dotori.guidely.domain.declaration.service.LocationService;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +28,7 @@ public class LocationController {
      * Location Id로 신고 리스트 가져오기
      */
     @GetMapping("{id}")
-    public ResponseEntity<List<ListDclarationByLocationIdResponseDto>> findById(@PathVariable long id){
+    public ResponseEntity<List<ListDeclarationResponseDto>> findById(@PathVariable long id){
         return ResponseEntity.ok(locationService.findById(id));
     }
     /**
@@ -44,5 +44,9 @@ public class LocationController {
     @GetMapping("navigation")
     public ResponseEntity<List<LocationResponseDto>> findArroundByCoordinate(@RequestParam double latitude, @RequestParam double longitude){
         return ResponseEntity.ok(locationService.findArroundByCoordinate(latitude,longitude));
+    }
+    @GetMapping("find")
+    public ResponseEntity<List<ListDeclarationResponseDto>> findByBuildingName(@RequestParam String buildingName){
+        return ResponseEntity.ok(locationService.findByBuildingName(buildingName));
     }
 }

@@ -1,6 +1,7 @@
 package dotori.guidely.domain.user.domain;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import dotori.guidely.domain.badge.domain.Badge;
 import dotori.guidely.domain.declaration.domain.Declaration;
 import dotori.guidely.domain.heart.domain.Heart;
 import dotori.guidely.domain.oauth.domain.OAuthProvider;
@@ -49,9 +50,25 @@ public class User extends BaseTime {
     @Builder.Default
     @OneToMany(mappedBy = "user")
     @JsonManagedReference
-    private List<Declaration> declarationList = new ArrayList<>();
+    private List<Declaration> declarationList=new ArrayList<>();
+
+
+    @OneToMany(mappedBy = "user")
+    @JsonManagedReference
+    private List<Badge> badges = new ArrayList<>();
+
+    @Builder
+    public User(String email, String nickname, OAuthProvider oAuthProvider) {
+        this.email = email;
+        this.nickname = nickname;
+        this.oAuthProvider = oAuthProvider;
+    }
 
     public void addDeclaration(Declaration declaration){ //편의 메소드
         this.declarationList.add(declaration);
+    }
+
+    public void addBadge(Badge badge){
+        this.badges.add(badge);
     }
 }

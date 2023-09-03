@@ -11,4 +11,6 @@ public interface LocationRepository extends JpaRepository<Location,Long> {
     Optional<Location> findByLatitudeAndLongitude(double latitude,double longitude);
     @Query(value = "select loc from Location loc where ST_Distance_Sphere(POINT(:longitude,:latitude), POINT(loc.longitude,loc.latitude)) <= 500")
     List<Location> findArroundByCoordinate(double latitude,double longitude);
+
+    Location findBybuildingName(String buildingName);
 }
