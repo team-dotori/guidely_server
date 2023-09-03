@@ -19,7 +19,7 @@ import java.util.List;
 @Slf4j
 @Tag(name = "댓글 API", description = "댓글 서비스의 api")
 @RestController
-@RequestMapping("/posts")
+@RequestMapping("/api/posts")
 @RequiredArgsConstructor
 public class CommentController {
 
