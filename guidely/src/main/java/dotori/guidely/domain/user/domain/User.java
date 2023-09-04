@@ -1,19 +1,29 @@
 package dotori.guidely.domain.user.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import dotori.guidely.domain.badge.domain.Badge;
+import dotori.guidely.domain.declaration.domain.Declaration;
+import dotori.guidely.domain.heart.domain.Heart;
 import dotori.guidely.domain.oauth.domain.OAuthProvider;
-import lombok.*;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.format.annotation.DateTimeFormat;
+import dotori.guidely.domain.post.domain.Post;
+import dotori.guidely.global.BaseTime;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
 @Table(name = "users")
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+@SuperBuilder
+public class User extends BaseTime {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,20 +35,34 @@ public class User {
     @Column
     private String nickname;
 
-    @CreatedDate
-    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
-    private LocalDateTime createdDate;
-
     @Enumerated(EnumType.STRING)
-    private UserType type = UserType.NEW;
+    private UserType type;
 
     @Enumerated(EnumType.STRING)
     private OAuthProvider oAuthProvider;
 
-    @Builder
-    public User(String email, String nickname, OAuthProvider oAuthProvider) {
-        this.email = email;
-        this.nickname = nickname;
-        this.oAuthProvider = oAuthProvider;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Post> posts;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Heart> hearts;
+
+    @Builder.Default
+    @OneToMany(mappedBy = "user")
+    @JsonManagedReference
+    private List<Declaration> declarationList=new ArrayList<>();
+
+
+    @OneToMany(mappedBy = "user")
+    @JsonManagedReference
+    private List<Badge> badges = new ArrayList<>();
+
+
+    public void addDeclaration(Declaration declaration){ //편의 메소드
+        this.declarationList.add(declaration);
+    }
+
+    public void addBadge(List<Badge> badges){
+        this.badges = badges;
     }
 }
