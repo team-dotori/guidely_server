@@ -6,8 +6,7 @@ import dotori.guidely.domain.post.dto.request.TextPostRequestDto;
 import dotori.guidely.domain.post.dto.request.VoicePostRequestDto;
 import dotori.guidely.domain.post.dto.response.PostResponseDto;
 import dotori.guidely.domain.post.service.PostService;
-import dotori.guidely.domain.user.repository.UserRepository;
-import dotori.guidely.global.utils.jwt.AuthTokensGenerator;
+import dotori.guidely.domain.user.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -27,14 +26,14 @@ import java.util.List;
 public class PostController {
 
     private final PostService postService;
-    private final AuthTokensGenerator authTokensGenerator;
+    private final UserService userService;
     private final ModelMapper modelMapper;
 
     @Operation(summary = "텍스트 게시글 생성", description = "텍스트 게시글을 생성하는 메서드")
     @PostMapping("/text")
     public ResponseEntity<PostResponseDto> createTextPost(@RequestBody TextPostRequestDto request,
                                                  @RequestHeader(value = "accessToken") String accessToken){
-        Long userId = authTokensGenerator.extractUserId(accessToken);
+        Long userId = userService.findUserIdByAccessToken(accessToken);
 
         PostResponseDto response = postService.createTextPost(request, userId);
 
@@ -47,7 +46,7 @@ public class PostController {
     @PostMapping("/voice")
     public ResponseEntity<PostResponseDto> createVoicePost(@RequestBody VoicePostRequestDto request,
                                                  @RequestHeader(value = "accessToken") String accessToken){
-        Long userId = authTokensGenerator.extractUserId(accessToken);
+        Long userId = userService.findUserIdByAccessToken(accessToken);
 
         PostResponseDto response = postService.createVoicePost(request, userId);
 
@@ -81,7 +80,7 @@ public class PostController {
     @GetMapping("/user")
     public ResponseEntity<List<PostResponseDto>> findAllByAccessToken(
                                                         @RequestHeader(value = "accessToken") String accessToken) {
-        Long userId = authTokensGenerator.extractUserId(accessToken);
+        Long userId = userService.findUserIdByAccessToken(accessToken);
 
         List<PostResponseDto> responses = postService.findAllByUserId(userId);
 

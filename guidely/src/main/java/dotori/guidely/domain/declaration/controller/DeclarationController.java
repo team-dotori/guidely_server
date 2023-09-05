@@ -3,7 +3,7 @@ package dotori.guidely.domain.declaration.controller;
 import dotori.guidely.domain.declaration.dto.DeclarationDto;
 import dotori.guidely.domain.declaration.dto.response.DeclarationResponseDto;
 import dotori.guidely.domain.declaration.service.DeclarationService;
-import dotori.guidely.global.utils.jwt.AuthTokensGenerator;
+import dotori.guidely.domain.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -19,15 +19,14 @@ import java.util.List;
 @Slf4j
 public class DeclarationController {
     private final DeclarationService declarationService;
-
-    private final AuthTokensGenerator authTokensGenerator;
+    private final UserService userService;
 
     /**
      * 신고 정보 저장
      */
     @PostMapping
     public ResponseEntity<DeclarationResponseDto> save(@RequestHeader(value="accessToken") String accessToken,@RequestBody DeclarationDto declarationDto){
-        Long userId = authTokensGenerator.extractUserId(accessToken);
+        Long userId = userService.findUserIdByAccessToken(accessToken);
         DeclarationResponseDto declarationResponseDto = declarationService.saveDeclaration(userId,declarationDto);
 
         return ResponseEntity
@@ -47,7 +46,7 @@ public class DeclarationController {
      */
     @DeleteMapping
     public ResponseEntity<Long> delete(@RequestHeader(value="accessToken") String accessToken){
-        Long userId = authTokensGenerator.extractUserId(accessToken);
+        Long userId = userService.findUserIdByAccessToken(accessToken);
         return ResponseEntity.ok(declarationService.delete(userId));
     }
     /**
@@ -55,7 +54,7 @@ public class DeclarationController {
      */
     @PatchMapping
     public ResponseEntity<Long> update(@RequestHeader(value="accessToken")String accessToken,@RequestBody DeclarationDto declarationDto){
-        Long userId = authTokensGenerator.extractUserId(accessToken);
+        Long userId = userService.findUserIdByAccessToken(accessToken);
         return ResponseEntity.ok(declarationService.update(userId,declarationDto));
     }
     /**
