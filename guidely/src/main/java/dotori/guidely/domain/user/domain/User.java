@@ -65,4 +65,8 @@ public class User extends BaseTime {
     public void addBadge(List<Badge> badges){
         this.badges = badges;
     }
+
+    public void setType(UserType type) {
+        this.type = type;
+    }
 }
