@@ -18,13 +18,28 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class LocationService {
     private final LocationRepository locationRepository;
-
+    public double calMean(Location location){
+        double risk = 0.0;
+        List<Declaration> declarationList = location.getDeclarationList();
+        for(Declaration declaration : declarationList){
+            switch (declaration.getRisk()){
+                case LOW: risk +=0.0; break;
+                case MEDIUM: risk += 1.0; break;
+                case HIGH: risk += 2.0; break;
+                default: risk += 0.0; break;
+            }
+        }
+        return risk/(declarationList.size());
+    }
     public List<LocationResponseDto> findAll(){
-        List<Location> locations = locationRepository.findAll();
+                List<Location> locations = locationRepository.findAll();
         List<LocationResponseDto> locationResponseDtos = new ArrayList<>();
 
         for(Location location : locations ){
-            locationResponseDtos.add(LocationResponseDto.builder().location(location).build());
+            double risk = calMean(location);
+            locationResponseDtos.add(LocationResponseDto.builder()
+                    .location(location).riskMean(risk)
+                    .build());
         }
         return locationResponseDtos;
     }
@@ -35,10 +50,13 @@ public class LocationService {
     }
 
     public LocationResponseDto findByCoor(double latitude, double longitude){
+        Location location = locationRepository.findByLatitudeAndLongitude(latitude, longitude)
+                .orElseThrow(() -> new CustomException(ErrorCode.LOCATION_NOT_FOUND));
+        double risk = calMean(location);
         return LocationResponseDto
                 .builder()
-                .location(locationRepository.findByLatitudeAndLongitude(latitude, longitude)
-                        .orElseThrow(() -> new CustomException(ErrorCode.LOCATION_NOT_FOUND)))
+                .location(location)
+                .riskMean(risk)
                 .build();
     }
     public List<ListDeclarationResponseDto> findById(long id){
@@ -55,7 +73,8 @@ public class LocationService {
         List<Location> arroundByCoordinate = locationRepository.findArroundByCoordinate(latitude, longitude);
         List<LocationResponseDto> locationResponseDtos = new ArrayList<>();
         for(Location location : arroundByCoordinate){
-            locationResponseDtos.add(LocationResponseDto.builder().location(location).build());
+            double risk = calMean(location);
+            locationResponseDtos.add(LocationResponseDto.builder().location(location).riskMean(risk).build());
         }
         return locationResponseDtos;
     }

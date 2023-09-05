@@ -16,9 +16,9 @@ public class LocationResponseDto {
     private int countDeclaration;
     private LocationType type;
 
-
+    private double riskMean;
     @Builder
-    public LocationResponseDto(Location location){
+    public LocationResponseDto(Location location,double riskMean){
         this.id = location.getId();
         this.latitude = location.getLatitude();
         this.longitude = location.getLongitude();
@@ -26,5 +26,6 @@ public class LocationResponseDto {
         this.buildingName = location.getBuildingName();
         this.type = location.getType();
         this.countDeclaration = location.getCountDeclaration();
+        this.riskMean = riskMean;
     }
 }
