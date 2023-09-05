@@ -2,13 +2,15 @@ package dotori.guidely.domain.badge.scheduler;
 
 import dotori.guidely.domain.badge.domain.Badge;
 import dotori.guidely.domain.user.domain.User;
+import lombok.RequiredArgsConstructor;
 
-
+@RequiredArgsConstructor
 public class CollectBadge {
     private User user;
     private int num ; //기준 number
     private int count;
     private int idx;
+
 
     public CollectBadge(User user,int num, int count, int idx) {
         this.user = user;

@@ -36,8 +36,6 @@ public class Declaration extends BaseTime{
     private int likeCount;
 
     private String imgUrl;
-
-// 상세 분류, 이미지url
     @ManyToOne(cascade = CascadeType.ALL)
     @JsonManagedReference
     @JoinColumn(name="location_id")

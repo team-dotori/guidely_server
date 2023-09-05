@@ -61,10 +61,9 @@ public class DeclarationController {
     /**
      * 신고 좋아요
      */
-    @PatchMapping("/like")
-    public ResponseEntity<Long> addLike(@RequestHeader(value="accessToken") String accessToken){
-        Long userId = authTokensGenerator.extractUserId(accessToken);
-        return ResponseEntity.ok(declarationService.addLike(userId));
+    @PatchMapping("/like/{id}")
+    public ResponseEntity<Long> addLike(@PathVariable long id){
+        return ResponseEntity.ok(declarationService.addLike(id));
     }
 
 }

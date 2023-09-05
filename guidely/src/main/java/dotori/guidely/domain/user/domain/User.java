@@ -48,7 +48,7 @@ public class User extends BaseTime {
     private List<Heart> hearts;
 
     @Builder.Default
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonManagedReference
     private List<Declaration> declarationList=new ArrayList<>();
 

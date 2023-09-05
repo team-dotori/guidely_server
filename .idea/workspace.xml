@@ -4,16 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2776cb80-a742-4097-a261-55818debcd46" name="Changes" comment="Fix : 회원가입 시 badge list 초기화하도록 수정  &#10;&#10;- OAuthService.newUser 에 초기화하는 함수 호출하도록 작성함.&#10;&#10;Related to : #15">
+    <list default="true" id="2776cb80-a742-4097-a261-55818debcd46" name="Changes" comment="Fix : 신고에 date 필드 추가 / 게시판 리스트에 badge count로직 추가  &#10;&#10;- declaration 엔티티에 baseTime 상속받음.&#10;- PostService에 post 할 때 badge count 로직 추가함.&#10;&#10;Related to : #15">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/badge/controller/BadgeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/badge/controller/BadgeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/badge/domain/Badge.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/badge/domain/Badge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/badge/scheduler/CollectBadge.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/badge/scheduler/CollectBadge.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/badge/service/BadgeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/badge/service/BadgeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/controller/DeclarationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/controller/DeclarationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/domain/Declaration.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/domain/Declaration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/dto/response/DeclarationResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/dto/response/DeclarationResponseDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/dto/response/ListDeclarationResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/dto/response/ListDeclarationResponseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/dto/response/LocationResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/dto/response/LocationResponseDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/service/DeclarationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/service/DeclarationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/heart/service/HeartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/heart/service/HeartService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/post/service/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/post/service/PostService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/user/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/user/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/service/LocationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/service/LocationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/user/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/user/domain/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,7 +138,8 @@
       <workItem from="1693566199618" duration="789000" />
       <workItem from="1693646046434" duration="3706000" />
       <workItem from="1693711495252" duration="21428000" />
-      <workItem from="1693741196161" duration="3040000" />
+      <workItem from="1693741196161" duration="15428000" />
+      <workItem from="1693891211329" duration="2547000" />
     </task>
     <task id="LOCAL-00001" summary="feat: 신고 엔티티 추가">
       <created>1692972982779</created>
@@ -271,7 +274,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693742874837</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Fix : 신고에 date 필드 추가 / 게시판 리스트에 badge count로직 추가  &#10;&#10;- declaration 엔티티에 baseTime 상속받음.&#10;- PostService에 post 할 때 badge count 로직 추가함.&#10;&#10;Related to : #15">
+      <created>1693744549476</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1693744549476</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -342,7 +352,8 @@
     <MESSAGE value="Fix : location ID로 신고 리스트 조회 시 신고 ID도 같이 반환되도록 수정&#10;&#10;- ListDeclarationResponseDto에서 id 필드 추가 및 생성자 추가 &#10;- +) 주석 처리한 거 제거&#10;&#10;Related to : #15" />
     <MESSAGE value="Fix : userId 접근 -&gt; accessToken 접근으로 수정&#10;&#10;- 각 controller 단에서 유저 Id가 필요한 함수를 모두 header accessToken으로 수정&#10;&#10;Related to : #15" />
     <MESSAGE value="Fix : 회원가입 시 badge list 초기화하도록 수정  &#10;&#10;- OAuthService.newUser 에 초기화하는 함수 호출하도록 작성함.&#10;&#10;Related to : #15" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix : 회원가입 시 badge list 초기화하도록 수정  &#10;&#10;- OAuthService.newUser 에 초기화하는 함수 호출하도록 작성함.&#10;&#10;Related to : #15" />
+    <MESSAGE value="Fix : 신고에 date 필드 추가 / 게시판 리스트에 badge count로직 추가  &#10;&#10;- declaration 엔티티에 baseTime 상속받음.&#10;- PostService에 post 할 때 badge count 로직 추가함.&#10;&#10;Related to : #15" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix : 신고에 date 필드 추가 / 게시판 리스트에 badge count로직 추가  &#10;&#10;- declaration 엔티티에 baseTime 상속받음.&#10;- PostService에 post 할 때 badge count 로직 추가함.&#10;&#10;Related to : #15" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

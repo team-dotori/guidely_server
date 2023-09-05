@@ -12,5 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @CrossOrigin(origins = "*")
 public class BadgeController {
     private final BadgeService badgeService;
-
+//    @GetMapping
+//    public void reset(@RequestHeader(value = "accessToken") String accessToken){
+//        badgeService.reset()
+//    }
 }

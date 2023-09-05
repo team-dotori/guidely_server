@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class Badge {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long badgeId;
 
     @NonNull
@@ -32,14 +33,6 @@ public class Badge {
     @CreatedDate
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDateTime collectDate;
-
-//    @OneToMany(mappedBy = "badge")
-//    private List<Collect> collects = new ArrayList<>();
-
-//    @ManyToOne
-//    @JsonBackReference
-//    @JoinColumn(name = "user_id")
-//    private User user;
 
     @Builder
     public Badge( long id,@NonNull int state, int level, int kingBadge) {

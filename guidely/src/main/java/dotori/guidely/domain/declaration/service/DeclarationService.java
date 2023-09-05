@@ -1,6 +1,7 @@
 package dotori.guidely.domain.declaration.service;
 
 import dotori.guidely.domain.badge.scheduler.CollectBadge;
+import dotori.guidely.domain.badge.service.BadgeService;
 import dotori.guidely.domain.declaration.domain.Declaration;
 import dotori.guidely.domain.declaration.domain.Location;
 import dotori.guidely.domain.declaration.dto.DeclarationDto;
@@ -26,6 +27,8 @@ public class DeclarationService {
     private final DeclarationRepository declarationRepository;
     private final UserRepository userRepository;
     private final LocationService locationService;
+
+    private final BadgeService badgeService;
     private final ModelMapper modelMapper;
     @Transactional
     public DeclarationResponseDto saveDeclaration(long userId, DeclarationDto declarationDto) {
@@ -52,8 +55,11 @@ public class DeclarationService {
         declarationEntity.setUser(user);
         user.addDeclaration(declarationEntity);
         Declaration declaration = declarationRepository.save(declarationEntity);
+        if (user.getBadges().size()==0){
+            badgeService.reset(user);
+        }
         checkCount(user);
-        return modelMapper.map(declaration,DeclarationResponseDto.class);
+        return new DeclarationResponseDto(declaration);
 
     }
 

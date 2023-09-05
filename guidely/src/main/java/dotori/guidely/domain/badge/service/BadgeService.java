@@ -21,9 +21,9 @@ public class BadgeService {
     @Transactional
     public User reset(User user){
         List<Badge> badges = new ArrayList<>();
+        System.out.println(" reset start ");
         for(int i = 0 ; i<10 ; i++) {
             Badge badge = Badge.builder()
-                    .id(i)
                     .level(1) // 0
                     .state(0) //비활성화
                     .kingBadge(0) // False
