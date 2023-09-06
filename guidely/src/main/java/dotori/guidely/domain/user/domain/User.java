@@ -3,7 +3,8 @@ package dotori.guidely.domain.user.domain;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import dotori.guidely.domain.badge.domain.Badge;
 import dotori.guidely.domain.declaration.domain.Declaration;
-import dotori.guidely.domain.heart.domain.Heart;
+import dotori.guidely.domain.heart.domain.DeclarationHeart;
+import dotori.guidely.domain.heart.domain.PostHeart;
 import dotori.guidely.domain.oauth.domain.OAuthProvider;
 import dotori.guidely.domain.post.domain.Post;
 import dotori.guidely.global.BaseTime;
@@ -45,13 +46,15 @@ public class User extends BaseTime {
     private List<Post> posts;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Heart> hearts;
+    private List<PostHeart> postHearts;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<DeclarationHeart> declarationHearts;
 
     @Builder.Default
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonManagedReference
-    private List<Declaration> declarationList=new ArrayList<>();
-
+    private List<Declaration> declarationList = new ArrayList<>();
 
     @OneToMany(mappedBy = "user")
     @JsonManagedReference

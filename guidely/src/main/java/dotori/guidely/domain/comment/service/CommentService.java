@@ -97,6 +97,7 @@ public class CommentService {
                     .nickname(comment.getUser().getNickname())
                     .type(comment.getType())
                     .content(comment.getContent())
+                    .createdDate(comment.getCreatedDate())
                     .build());
         }
 
@@ -124,6 +125,7 @@ public class CommentService {
                 .nickname(comment.getUser().getNickname())
                 .type(comment.getType())
                 .content(comment.getContent())
+                .createdDate(comment.getCreatedDate())
                 .build();
 
         return response;

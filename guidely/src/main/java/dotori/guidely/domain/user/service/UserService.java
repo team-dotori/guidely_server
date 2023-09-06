@@ -50,12 +50,8 @@ public class UserService {
     public UserDto findByUserId(Long userId) {
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 
-        /**
-         * TODO
-         * Exception Handler 정의
-         */
         User user = userRepository.findByUserId(userId)
-                .orElseThrow(() -> new RuntimeException());
+                .orElseThrow(() -> new CustomException(ErrorCode.USER_NOT_FOUND));
         return modelMapper.map(user, UserDto.class);
     }
     public User findByid(Long userId){
@@ -97,7 +93,6 @@ public class UserService {
     public void setUserType(Long userId, UserTypeDto dto) {
         User user = userRepository.findByUserId(userId)
                 .orElseThrow(() -> new CustomException(ErrorCode.USER_NOT_FOUND));
-
         user.setType(dto.getType());
     }
 }
