@@ -1,6 +1,6 @@
 package dotori.guidely.domain.heart.controller;
 
-import dotori.guidely.domain.heart.dto.CheckDto;
+import dotori.guidely.domain.heart.dto.CheckHeartDto;
 import dotori.guidely.domain.heart.dto.DeclarationHeartDto;
 import dotori.guidely.domain.heart.dto.PostHeartDto;
 import dotori.guidely.domain.heart.service.HeartService;
@@ -22,8 +22,8 @@ public class HeartController {
     @Operation(summary = "사용자의 게시글 좋아요 여부 확인",
             description = "사용자가 해당 게시글에 이미 좋아요를 등록한지 확인하는 API")
     @GetMapping("/posts/check")
-    public ResponseEntity<CheckDto> checkAlreadyPostHeart(@RequestBody @Valid PostHeartDto request) {
-        CheckDto response = CheckDto.builder()
+    public ResponseEntity<CheckHeartDto> checkAlreadyPostHeart(@RequestBody @Valid PostHeartDto request) {
+        CheckHeartDto response = CheckHeartDto.builder()
                 .alreadyLike(heartService.checkAlreadyPostHeart(request))
                 .build();
 
@@ -56,8 +56,8 @@ public class HeartController {
     @Operation(summary = "사용자의 신고 좋아요 여부 확인",
             description = "사용자가 해당 신고 이미 좋아요를 등록한지 확인하는 API")
     @GetMapping("/declaration/check")
-    public ResponseEntity<CheckDto> checkAlreadyDeclarationHeart(@RequestBody @Valid DeclarationHeartDto request) {
-        CheckDto response = CheckDto.builder()
+    public ResponseEntity<CheckHeartDto> checkAlreadyDeclarationHeart(@RequestBody @Valid DeclarationHeartDto request) {
+        CheckHeartDto response = CheckHeartDto.builder()
                 .alreadyLike(heartService.checkAlreadyDeclarationHeart(request))
                 .build();
 
