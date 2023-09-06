@@ -9,6 +9,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -19,4 +21,5 @@ public class CommentDto {
     private Post post;
     private User user;
     private CommentContent content;
+    private LocalDateTime createdDate;
 }
