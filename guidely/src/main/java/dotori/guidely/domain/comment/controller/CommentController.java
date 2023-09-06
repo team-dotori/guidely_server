@@ -47,6 +47,7 @@ public class CommentController {
                 .nickname(commentDto.getUser().getNickname())
                 .type(commentDto.getType())
                 .content(commentDto.getContent())
+                .createdDate(commentDto.getCreatedDate())
                 .build();
 
         return ResponseEntity
