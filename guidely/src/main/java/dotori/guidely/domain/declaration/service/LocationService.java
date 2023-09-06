@@ -2,6 +2,7 @@ package dotori.guidely.domain.declaration.service;
 
 import dotori.guidely.domain.declaration.domain.Declaration;
 import dotori.guidely.domain.declaration.domain.Location;
+import dotori.guidely.domain.declaration.dto.LocationCoorDto;
 import dotori.guidely.domain.declaration.dto.response.ListDeclarationResponseDto;
 import dotori.guidely.domain.declaration.dto.response.LocationResponseDto;
 import dotori.guidely.domain.declaration.repository.LocationRepository;
@@ -86,5 +87,27 @@ public class LocationService {
             declarationDtos.add(ListDeclarationResponseDto.builder().declaration(declaration).build());
         }
         return declarationDtos;
+    }
+
+    public List<List<LocationResponseDto>> findAllByCoordinate(LocationCoorDto locationCoorDto) {
+        List<List<Location>> allLocation = new ArrayList<>();
+        for(LocationCoorDto tmp : locationCoorDto.getLocationCoorDtos()){
+            List<Location> arroundByCoordinate = new ArrayList<>();
+            for(Location location : locationRepository.findArroundByCoordinate(tmp.getLatitude(), tmp.getLongitude())){
+                arroundByCoordinate.add(location);
+            }
+            allLocation.add(arroundByCoordinate);
+        }
+        List<List<LocationResponseDto>> allResponseDto = new ArrayList<>();
+        for(List<Location> locationList: allLocation){
+            List<LocationResponseDto> locationResponseDtos = new ArrayList<>();
+            for(Location location : locationList){
+                double risk = calMean(location);
+                locationResponseDtos.add(LocationResponseDto.builder().location(location).riskMean(risk).build());
+            }
+            allResponseDto.add(locationResponseDtos);
+        }
+
+        return allResponseDto;
     }
 }

@@ -1,6 +1,7 @@
 package dotori.guidely.domain.post.service;
 
 import dotori.guidely.domain.badge.scheduler.CollectBadge;
+import dotori.guidely.domain.badge.service.BadgeService;
 import dotori.guidely.domain.post.domain.*;
 import dotori.guidely.domain.post.dto.PostDto;
 import dotori.guidely.domain.post.dto.request.ModifyPostRequestDto;
@@ -29,6 +30,7 @@ public class PostService {
     private final PostRepository postRepository;
     private final PostContentRepository contentRepository;
     private final UserRepository userRepository;
+    private final BadgeService badgeService;
 
     // 단일 텍스트 게시글 생성
     @Transactional
@@ -50,6 +52,9 @@ public class PostService {
                     .build();
 
         postRepository.save(textPost);
+        if (user.getBadges().size()==0){
+            badgeService.reset(user);
+        }
         checkCount(user);
         return toDto(textPost);
     }
@@ -159,7 +164,7 @@ public class PostService {
                 .build();
     }
     public void checkCount(User user){
-        CollectBadge collectBadge = new CollectBadge(user,5,user.getPosts().size(),0);
+        CollectBadge collectBadge = new CollectBadge(user,5,user.getPosts().size(),2);
         collectBadge.detectAndExecute();
     }
 

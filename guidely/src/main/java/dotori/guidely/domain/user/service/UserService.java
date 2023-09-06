@@ -24,6 +24,7 @@ public class UserService {
     private final UserRepository userRepository;
 
     private final ModelMapper modelMapper;
+
     public List<UserDto> findAll() {
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 
@@ -47,10 +48,6 @@ public class UserService {
     public UserDto findByUserId(Long userId) {
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 
-        /**
-         * TODO
-         * Exception Handler 정의
-         */
         User user = userRepository.findByUserId(userId)
                 .orElseThrow(() -> new RuntimeException());
         return modelMapper.map(user, UserDto.class);
@@ -78,7 +75,6 @@ public class UserService {
         for (Badge badge : badgeList) {
             badgeDtos.add(BadgeDto.builder()
                     .level(badge.getLevel())
-                    .badgeId(badge.getBadgeId())
                     .collectDate(badge.getCollectDate())
                     .kingBadge(badge.getKingBadge())
                     .state(badge.getState())

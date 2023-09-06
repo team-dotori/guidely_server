@@ -1,5 +1,6 @@
 package dotori.guidely.domain.declaration.controller;
 
+import dotori.guidely.domain.declaration.dto.LocationCoorDto;
 import dotori.guidely.domain.declaration.dto.response.ListDeclarationResponseDto;
 import dotori.guidely.domain.declaration.dto.response.LocationResponseDto;
 import dotori.guidely.domain.declaration.service.LocationService;
@@ -44,6 +45,11 @@ public class LocationController {
     @GetMapping("navigation")
     public ResponseEntity<List<LocationResponseDto>> findArroundByCoordinate(@RequestParam double latitude, @RequestParam double longitude){
         return ResponseEntity.ok(locationService.findArroundByCoordinate(latitude,longitude));
+    }
+
+    @PostMapping("navigation/all")
+    public ResponseEntity<List<List<LocationResponseDto>>> findAllByCoordinate(@RequestBody LocationCoorDto locationCoorDto){
+        return ResponseEntity.ok(locationService.findAllByCoordinate(locationCoorDto));
     }
     @GetMapping("find")
     public ResponseEntity<List<ListDeclarationResponseDto>> findByBuildingName(@RequestParam String buildingName){

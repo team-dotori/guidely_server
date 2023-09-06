@@ -22,7 +22,6 @@ public class CollectBadge {
     //    @Scheduled(fixedRate = 1000) //1초마다 실행
     public void detectAndExecute(){ //신고 갯수 , badge index
         int currentLevel = user.getBadges().get(idx).getLevel();
-        System.out.println("신고 갯수 = " + count);
         if(currentLevel*num == count){ //신고 갯수가 목표 갯수에 달성하면
             Badge badge = user.getBadges().get(idx);
             if(badge.getState()==0){ //처음으로 뱃지를 땄다면

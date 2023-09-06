@@ -35,11 +35,12 @@ public class Badge {
     private LocalDateTime collectDate;
 
     @Builder
-    public Badge( long id,@NonNull int state, int level, int kingBadge) {
+    public Badge(long id, @NonNull int state, int level, int kingBadge,LocalDateTime collectDate) {
         this.badgeId = id;
         this.state = state;
         this.level = level;
         this.kingBadge = kingBadge;
+        this.collectDate = collectDate;
     }
     public void firstUpdate(){
         this.state = 1;

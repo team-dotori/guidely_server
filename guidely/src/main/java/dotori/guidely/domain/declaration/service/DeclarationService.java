@@ -92,7 +92,7 @@ public class DeclarationService {
     }
 
     public void checkCount(User user){
-        CollectBadge collectBadge = new CollectBadge(user,5,user.getDeclarationList().size(),0);
+        CollectBadge collectBadge = new CollectBadge(user,5,user.getDeclarationList().size(),1);
         collectBadge.detectAndExecute();
     }
 }
