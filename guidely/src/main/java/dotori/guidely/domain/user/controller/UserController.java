@@ -7,6 +7,7 @@ import dotori.guidely.domain.user.dto.UserDto;
 import dotori.guidely.domain.user.dto.UserTypeDto;
 import dotori.guidely.domain.user.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Slf4j
+@Tag(name = "사용자 API", description = "사용자 서비스의 api")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/users")

@@ -4,12 +4,14 @@ import dotori.guidely.domain.declaration.dto.response.ListDeclarationResponseDto
 import dotori.guidely.domain.declaration.dto.response.LocationResponseDto;
 import dotori.guidely.domain.declaration.service.LocationService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Tag(name = "위치 정보 API", description = "위치 정보 서비스의 api")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/location")

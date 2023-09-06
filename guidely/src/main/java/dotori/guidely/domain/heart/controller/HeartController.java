@@ -5,6 +5,7 @@ import dotori.guidely.domain.heart.dto.DeclarationHeartDto;
 import dotori.guidely.domain.heart.dto.PostHeartDto;
 import dotori.guidely.domain.heart.service.HeartService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
+@Tag(name = "좋아요 API", description = "좋아요 서비스의 api")
 @RestController
 @RequestMapping("/api/heart")
 @RequiredArgsConstructor
