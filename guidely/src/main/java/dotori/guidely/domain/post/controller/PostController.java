@@ -32,7 +32,7 @@ public class PostController {
     @Operation(summary = "텍스트 게시글 생성", description = "텍스트 게시글을 생성하는 메서드")
     @PostMapping("/text")
     public ResponseEntity<PostResponseDto> createTextPost(@RequestBody TextPostRequestDto request,
-                                                 @RequestHeader(value = "Accesstoken") String accessToken){
+                                                 @RequestHeader(value = "accessToken") String accessToken){
         Long userId = userService.findUserIdByAccessToken(accessToken);
 
         PostResponseDto response = postService.createTextPost(request, userId);
@@ -45,7 +45,7 @@ public class PostController {
     @Operation(summary = "음성 게시글 생성", description = "음성 게시글을 생성하는 메서드")
     @PostMapping("/voice")
     public ResponseEntity<PostResponseDto> createVoicePost(@RequestBody VoicePostRequestDto request,
-                                                 @RequestHeader(value = "Accesstoken") String accessToken){
+                                                 @RequestHeader(value = "accessToken") String accessToken){
         Long userId = userService.findUserIdByAccessToken(accessToken);
 
         PostResponseDto response = postService.createVoicePost(request, userId);
@@ -79,7 +79,7 @@ public class PostController {
     @Operation(summary = "사용자의 모든 게시글 조회", description = "해당 사용자가 작성한 모든 게시글을 조회하는 메서드")
     @GetMapping("/user")
     public ResponseEntity<List<PostResponseDto>> findAllByAccessToken(
-                                                        @RequestHeader(value = "Accesstoken") String accessToken) {
+                                                        @RequestHeader(value = "accessToken") String accessToken) {
         Long userId = userService.findUserIdByAccessToken(accessToken);
 
         List<PostResponseDto> responses = postService.findAllByUserId(userId);
