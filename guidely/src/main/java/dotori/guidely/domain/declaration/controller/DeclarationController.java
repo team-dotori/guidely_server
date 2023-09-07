@@ -29,7 +29,7 @@ public class DeclarationController {
      */
     @Operation(summary = "신고 정보 저장", description = "신고 정보를 저장하는 API")
     @PostMapping
-    public ResponseEntity<DeclarationResponseDto> save(@RequestHeader(value="accessToken") String accessToken,@RequestBody DeclarationDto declarationDto){
+    public ResponseEntity<DeclarationResponseDto> save(@RequestHeader(value="Accesstoken") String accessToken,@RequestBody DeclarationDto declarationDto){
         Long userId = userService.findUserIdByAccessToken(accessToken);
         DeclarationResponseDto declarationResponseDto = declarationService.saveDeclaration(userId,declarationDto);
 
@@ -53,7 +53,7 @@ public class DeclarationController {
      */
     @Operation(summary = "신고 정보 삭제", description = "신고 정보를 삭제하는 API")
     @DeleteMapping
-    public ResponseEntity<Long> delete(@RequestHeader(value="accessToken") String accessToken){
+    public ResponseEntity<Long> delete(@RequestHeader(value="Accesstoken") String accessToken){
         Long userId = userService.findUserIdByAccessToken(accessToken);
         return ResponseEntity.ok(declarationService.delete(userId));
     }
@@ -63,7 +63,7 @@ public class DeclarationController {
      */
     @Operation(summary = "신고 정보 수정", description = "신고 정보를 수정하는 API")
     @PatchMapping
-    public ResponseEntity<Long> update(@RequestHeader(value="accessToken")String accessToken,@RequestBody DeclarationDto declarationDto){
+    public ResponseEntity<Long> update(@RequestHeader(value="Accesstoken") String accessToken,@RequestBody DeclarationDto declarationDto){
         Long userId = userService.findUserIdByAccessToken(accessToken);
         return ResponseEntity.ok(declarationService.update(userId,declarationDto));
     }

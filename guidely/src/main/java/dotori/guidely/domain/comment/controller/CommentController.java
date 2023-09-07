@@ -30,7 +30,7 @@ public class CommentController {
     @PostMapping("/{postId}/comments")
     public ResponseEntity<CommentResponseDto> createComment(@RequestBody CommentRequestDto request,
                                                             @PathVariable Long postId,
-                                                            @RequestHeader(value = "accessToken") String accessToken) {
+                                                            @RequestHeader(value = "Accesstoken") String accessToken) {
         Long userId = userService.findUserIdByAccessToken(accessToken);
 
         CommentDto commentDto;

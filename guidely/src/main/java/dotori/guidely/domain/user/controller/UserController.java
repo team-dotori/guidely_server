@@ -35,7 +35,7 @@ public class UserController {
 
     @Operation(summary = "사용자 유형 조회", description = "사용자의 유형을 조회하는 API")
     @GetMapping("/type")
-    public ResponseEntity<UserType> findTypeByAccessToken(@RequestHeader(value = "accessToken") String accessToken) {
+    public ResponseEntity<UserType> findTypeByAccessToken(@RequestHeader(value = "Accesstoken") String accessToken) {
         Long userId = userService.findUserIdByAccessToken(accessToken);
 
         UserDto userDto = userService.findByUserId(userId);
@@ -47,7 +47,7 @@ public class UserController {
 
     @Operation(summary = "사용자 유형 설정", description = "사용자의 유형을 설정하는 API")
     @PostMapping("/type")
-    public ResponseEntity<String> getUserType(@RequestHeader(value = "accessToken") String accessToken,
+    public ResponseEntity<String> getUserType(@RequestHeader(value = "Accesstoken") String accessToken,
                                          @RequestBody UserTypeDto dto) {
         Long userId = userService.findUserIdByAccessToken(accessToken);
         userService.setUserType(userId, dto);
@@ -73,14 +73,14 @@ public class UserController {
 
     @Operation(summary = "사용자 보유 뱃지 조회", description = "사용자가 보유 중인 뱃지들을 조회하는 API")
     @GetMapping("/badges")
-    public ResponseEntity<List<BadgeDto>> findBadges(@RequestHeader(value = "accessToken") String accessToken){
+    public ResponseEntity<List<BadgeDto>> findBadges(@RequestHeader(value = "Accesstoken") String accessToken){
         Long userId = userService.findUserIdByAccessToken(accessToken);
         return ResponseEntity.ok(userService.findBadges(userId));
     }
 
     @Operation(summary = "사용자 신고 내역 조회", description = "사용자의 신고 내역을 조회하는 API")
     @GetMapping("/declarations")
-    public ResponseEntity<List<DeclarationResponseDto>> findByUserId(@RequestHeader(value = "accessToken") String accessToken){
+    public ResponseEntity<List<DeclarationResponseDto>> findByUserId(@RequestHeader(value = "Accesstoken") String accessToken){
         Long userId = userService.findUserIdByAccessToken(accessToken);
         return ResponseEntity.ok(userService.findDeclarationList(userId));
 
