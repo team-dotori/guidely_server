@@ -1,4 +1,4 @@
-package dotori.guidely.domain.heart.dto;
+package dotori.guidely.domain.user.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class DeclarationHeartDto {
-    private String declarationId;
-    private String userId;
+public class UserResponseDto {
+    private String nickname;
+    private String email;
 }
