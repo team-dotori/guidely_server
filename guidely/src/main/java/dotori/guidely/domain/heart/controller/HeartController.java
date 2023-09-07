@@ -23,7 +23,7 @@ public class HeartController {
 
     @Operation(summary = "사용자의 게시글 좋아요 여부 확인",
             description = "사용자가 해당 게시글에 이미 좋아요를 등록한지 확인하는 API")
-    @GetMapping("/posts/check")
+    @PostMapping("/posts/check")
     public ResponseEntity<CheckHeartDto> checkAlreadyPostHeart(@RequestBody @Valid PostHeartDto request) {
         CheckHeartDto response = CheckHeartDto.builder()
                 .alreadyLike(heartService.checkAlreadyPostHeart(request))
@@ -57,7 +57,7 @@ public class HeartController {
 
     @Operation(summary = "사용자의 신고 좋아요 여부 확인",
             description = "사용자가 해당 신고 이미 좋아요를 등록한지 확인하는 API")
-    @GetMapping("/declaration/check")
+    @PostMapping("/declaration/check")
     public ResponseEntity<CheckHeartDto> checkAlreadyDeclarationHeart(@RequestBody @Valid DeclarationHeartDto request) {
         CheckHeartDto response = CheckHeartDto.builder()
                 .alreadyLike(heartService.checkAlreadyDeclarationHeart(request))
