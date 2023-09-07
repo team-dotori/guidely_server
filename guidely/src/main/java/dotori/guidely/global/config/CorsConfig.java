@@ -23,7 +23,8 @@ public class CorsConfig {
                                 HttpMethod.POST.name(),
                                 HttpMethod.DELETE.name(),
                                 HttpMethod.PATCH.name()
-                        );
+                        )
+                        .allowedHeaders("accessToken");
             }
         };
     }
