@@ -5,6 +5,7 @@ import dotori.guidely.domain.declaration.dto.response.DeclarationResponseDto;
 import dotori.guidely.domain.user.domain.UserType;
 import dotori.guidely.domain.user.dto.UserDto;
 import dotori.guidely.domain.user.dto.UserTypeDto;
+import dotori.guidely.domain.user.dto.response.UserResponseDto;
 import dotori.guidely.domain.user.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -52,6 +53,22 @@ public class UserController {
         userService.setUserType(userId, dto);
 
         return ResponseEntity.ok("Type이 설정되었습니다.");
+    }
+
+    @Operation(summary = "사용자 정보 조회", description = "사용자의 정보를 조회하는 API")
+    @GetMapping("/one")
+    public ResponseEntity<UserResponseDto> findUserByAccessToken(
+            @RequestHeader(value = "accessToken") String accessToken) {
+        Long userId = userService.findUserIdByAccessToken(accessToken);
+        UserDto dto = userService.findByUserId(userId);
+        UserResponseDto response = UserResponseDto.builder()
+                .nickname(dto.getNickname())
+                .email(dto.getEmail())
+                .build();
+
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(response);
     }
 
     @Operation(summary = "사용자 보유 뱃지 조회", description = "사용자가 보유 중인 뱃지들을 조회하는 API")

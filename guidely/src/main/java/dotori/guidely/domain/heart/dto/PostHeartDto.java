@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PostHeartDto {
-    private Long postId;
-    private Long userId;
+    private String postId;
+    private String userId;
 }

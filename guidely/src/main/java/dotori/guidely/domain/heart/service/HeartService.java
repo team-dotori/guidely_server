@@ -34,33 +34,39 @@ public class HeartService {
      * 게시글 좋아요 등록
      */
     @Transactional
-    public void postHeart(PostHeartDto heartDto) {
-        User user = userRepository.findByUserId(heartDto.getUserId())
+    public void postHeart(PostHeartDto request) {
+        Long userId = Long.parseLong(request.getUserId());
+        Long postId = Long.parseLong(request.getPostId());
+
+        User user = userRepository.findByUserId(userId)
                 .orElseThrow(() -> new CustomException(ErrorCode.USER_NOT_FOUND));
 
-        if(postHeartRepository.findByUserAndPostId(user, heartDto.getPostId()).isPresent()){
+        if(postHeartRepository.findByUserAndPostId(user, postId).isPresent()){
             throw new CustomException(ErrorCode.ALREADY_HEARTED);
         }
 
         PostHeart heart = PostHeart.builder()
-                .postId(heartDto.getPostId())
+                .postId(postId)
                 .user(user)
                 .build();
 
         postHeartRepository.save(heart);
 
-        updatePostHeartCount(heartDto.getPostId(), 1);
+        updatePostHeartCount(postId, 1);
     }
 
     /**
      * 게시글 좋아요 취소
      */
     @Transactional
-    public void postUnHeart(PostHeartDto heartDto) {
-        User user = userRepository.findByUserId(heartDto.getUserId())
+    public void postUnHeart(PostHeartDto request) {
+        Long userId = Long.parseLong(request.getUserId());
+        Long postId = Long.parseLong(request.getPostId());
+
+        User user = userRepository.findByUserId(userId)
                 .orElseThrow(() -> new CustomException(ErrorCode.USER_NOT_FOUND));
 
-        Optional<PostHeart> heart = postHeartRepository.findByUserAndPostId(user, heartDto.getPostId());
+        Optional<PostHeart> heart = postHeartRepository.findByUserAndPostId(user, postId);
 
         if (heart.isEmpty()) {
             throw new CustomException(ErrorCode.HEART_NOT_FOUND);
@@ -68,7 +74,7 @@ public class HeartService {
 
         postHeartRepository.delete(heart.get());
 
-        updatePostHeartCount(heartDto.getPostId(), -1);
+        updatePostHeartCount(postId, -1);
     }
 
     /**
@@ -82,47 +88,55 @@ public class HeartService {
     }
 
     /**
-     * 신고 좋아요 여부 확인
+     * 게시글 좋아요 여부 확인
      */
     public boolean checkAlreadyPostHeart(PostHeartDto request) {
-        User user = userRepository.findByUserId(request.getUserId())
+        Long userId = Long.parseLong(request.getUserId());
+        Long postId = Long.parseLong(request.getPostId());
+        User user = userRepository.findByUserId(userId)
                 .orElseThrow(() -> new CustomException(ErrorCode.USER_NOT_FOUND));
 
-        return postHeartRepository.findByUserAndPostId(user, request.getPostId()).isPresent();
+        return postHeartRepository.findByUserAndPostId(user, postId).isPresent();
     }
 
     /**
      * 신고 좋아요 등록
      */
     @Transactional
-    public void declarationHeart(DeclarationHeartDto heartDto) {
-        User user = userRepository.findByUserId(heartDto.getUserId())
+    public void declarationHeart(DeclarationHeartDto request) {
+        Long userId = Long.parseLong(request.getUserId());
+        Long declarationId = Long.parseLong(request.getDeclarationId());
+
+        User user = userRepository.findByUserId(userId)
                 .orElseThrow(() -> new CustomException(ErrorCode.USER_NOT_FOUND));
 
-        if(declarationHeartRepository.findByUserAndDeclarationId(user, heartDto.getDeclarationId()).isPresent()){
+        if(declarationHeartRepository.findByUserAndDeclarationId(user, declarationId).isPresent()){
             throw new CustomException(ErrorCode.ALREADY_HEARTED);
         }
 
         DeclarationHeart heart = DeclarationHeart.builder()
-                .declarationId(heartDto.getDeclarationId())
+                .declarationId(declarationId)
                 .user(user)
                 .build();
 
         declarationHeartRepository.save(heart);
 
-        updateDeclarationHeartCount(heartDto.getUserId(), 1);
+        updateDeclarationHeartCount(declarationId, 1);
     }
 
     /**
      * 신고 좋아요 취소
      */
     @Transactional
-    public void declarationUnHeart(DeclarationHeartDto heartDto) {
-        User user = userRepository.findByUserId(heartDto.getUserId())
+    public void declarationUnHeart(DeclarationHeartDto request) {
+        Long userId = Long.parseLong(request.getUserId());
+        Long declarationId = Long.parseLong(request.getDeclarationId());
+
+        User user = userRepository.findByUserId(userId)
                 .orElseThrow(() -> new CustomException(ErrorCode.USER_NOT_FOUND));
 
         Optional<DeclarationHeart> heart =
-                declarationHeartRepository.findByUserAndDeclarationId(user, heartDto.getDeclarationId());
+                declarationHeartRepository.findByUserAndDeclarationId(user, declarationId);
 
         if (heart.isEmpty()) {
             throw new CustomException(ErrorCode.HEART_NOT_FOUND);
@@ -130,7 +144,7 @@ public class HeartService {
 
         declarationHeartRepository.delete(heart.get());
 
-        updateDeclarationHeartCount(heartDto.getDeclarationId(), -1);
+        updateDeclarationHeartCount(declarationId, -1);
     }
 
     /**
@@ -147,10 +161,13 @@ public class HeartService {
      * 신고 좋아요 여부 확인
      */
     public boolean checkAlreadyDeclarationHeart(DeclarationHeartDto request) {
-        User user = userRepository.findByUserId(request.getUserId())
+        Long userId = Long.parseLong(request.getUserId());
+        Long declarationId = Long.parseLong(request.getDeclarationId());
+
+        User user = userRepository.findByUserId(userId)
                 .orElseThrow(() -> new CustomException(ErrorCode.USER_NOT_FOUND));
 
-        return declarationHeartRepository.findByUserAndDeclarationId(user, request.getDeclarationId()).isPresent();
+        return declarationHeartRepository.findByUserAndDeclarationId(user, declarationId).isPresent();
     }
 
 }
