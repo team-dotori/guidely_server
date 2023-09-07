@@ -45,23 +45,14 @@ public class Declaration extends BaseTime{
     @JsonBackReference
     @JoinColumn(name = "user_id")
     private User user;
-    //TODO user 1 declaration 다 구현, 클라이언트에서 accessToken 받으면 userId로 설정하기 (JwtTokenProvider.class)
 
-//    @Builder
-//    public Declaration(@NonNull DeclarationCategory category, RiskType risk, @NonNull String contents, String imgUrl, @NonNull String specification) {
-//        this.category = category;
-//        this.risk = risk;
-//        this.contents = contents;
-//        this.imgUrl = imgUrl;
-//        this.specification = specification;
-//
-//    }
     public void setLocation(Location location){ //편의 메소드
         if(this.location !=null){
             this.location.getDeclarationList().remove(this);
         }
         this.location = location;
     }
+
     public void setUser(User user){
         if(this.user !=null){
             this.user.getDeclarationList().remove(this);
@@ -77,7 +68,8 @@ public class Declaration extends BaseTime{
         this.contents = contents;
         this.imgUrl = imgUrl;
     }
-    public void addLike(){
-        this.likeCount +=1;
+
+    public void updateHeartCount(int plusOrMinus){
+        this.likeCount += plusOrMinus;
     }
 }

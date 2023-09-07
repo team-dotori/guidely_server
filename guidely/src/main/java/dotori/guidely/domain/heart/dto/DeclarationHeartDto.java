@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class HeartDto {
-    private Long postId;
+public class DeclarationHeartDto {
+    private Long declarationId;
     private Long userId;
 }

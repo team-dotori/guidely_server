@@ -6,9 +6,11 @@ import dotori.guidely.domain.declaration.domain.Declaration;
 import dotori.guidely.domain.declaration.dto.response.DeclarationResponseDto;
 import dotori.guidely.domain.user.domain.User;
 import dotori.guidely.domain.user.dto.UserDto;
+import dotori.guidely.domain.user.dto.UserTypeDto;
 import dotori.guidely.domain.user.repository.UserRepository;
 import dotori.guidely.exception.CustomException;
 import dotori.guidely.exception.ErrorCode;
+import dotori.guidely.global.utils.jwt.AuthTokensGenerator;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
@@ -22,6 +24,7 @@ import java.util.List;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final AuthTokensGenerator authTokensGenerator;
 
     private final ModelMapper modelMapper;
 
@@ -49,7 +52,7 @@ public class UserService {
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 
         User user = userRepository.findByUserId(userId)
-                .orElseThrow(() -> new RuntimeException());
+                .orElseThrow(() -> new CustomException(ErrorCode.USER_NOT_FOUND));
         return modelMapper.map(user, UserDto.class);
     }
     public User findByid(Long userId){
@@ -81,5 +84,15 @@ public class UserService {
                     .build());
         }
         return badgeDtos;
+    }
+
+    public Long findUserIdByAccessToken(String accessToken) {
+        return authTokensGenerator.extractUserId(accessToken);
+    }
+
+    public void setUserType(Long userId, UserTypeDto dto) {
+        User user = userRepository.findByUserId(userId)
+                .orElseThrow(() -> new CustomException(ErrorCode.USER_NOT_FOUND));
+        user.setType(dto.getType());
     }
 }

@@ -14,11 +14,11 @@ import javax.validation.constraints.NotNull;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Heart {
+public class PostHeart {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long heartId;
+    private Long postHeartId;
 
     @NotNull
     private Long postId;

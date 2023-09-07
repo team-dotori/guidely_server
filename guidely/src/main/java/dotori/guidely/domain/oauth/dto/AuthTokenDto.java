@@ -10,13 +10,14 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AuthTokenDto {
+    private Long userId;
     private String accessToken;
     private String refreshToken;
     private String grantType;
     private Long expiresIn;
 
-    public static AuthTokenDto of(String accessToken, String refreshToken, String grantType, Long expiresIn) {
-        return new AuthTokenDto(accessToken, refreshToken, grantType, expiresIn);
+    public static AuthTokenDto of(Long userId, String accessToken, String refreshToken, String grantType, Long expiresIn) {
+        return new AuthTokenDto(userId, accessToken, refreshToken, grantType, expiresIn);
     }
 }
 

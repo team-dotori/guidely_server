@@ -4,20 +4,40 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2776cb80-a742-4097-a261-55818debcd46" name="Changes" comment="Fix : 뱃지 index 0 에러 해결&#10;&#10;Related to : #15">
-      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/dto/LocationCoorDto.java" afterDir="false" />
+    <list default="true" id="2776cb80-a742-4097-a261-55818debcd46" name="Changes" comment="Feat : 위치 위도/경도 리스트를 받고 반경 50m 반경 위치 리스트 반환&#10;&#10;- post로 List location을 받고 모든 위치의 반경 위치 리스트를 반환함. &#10;&#10;Related to : #15">
+      <change afterPath="$PROJECT_DIR$/guidely/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/heart/domain/DeclarationHeart.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/heart/dto/CheckHeartDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/heart/dto/DeclarationHeartDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/heart/repository/DeclarationHeartRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/heart/repository/PostHeartRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/test/controller/TestApiController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/user/dto/UserTypeDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/badge/controller/BadgeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/badge/controller/BadgeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/badge/domain/Badge.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/badge/domain/Badge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/badge/dto/BadgeDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/badge/dto/BadgeDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/badge/scheduler/CollectBadge.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/badge/scheduler/CollectBadge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/badge/service/BadgeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/badge/service/BadgeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/comment/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/comment/controller/CommentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/comment/dto/CommentDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/comment/dto/CommentDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/comment/dto/response/CommentResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/comment/dto/response/CommentResponseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/comment/service/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/comment/service/CommentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/controller/DeclarationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/controller/DeclarationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/controller/LocationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/controller/LocationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/repository/LocationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/repository/LocationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/domain/Declaration.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/domain/Declaration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/service/DeclarationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/service/DeclarationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/service/LocationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/service/LocationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/heart/controller/HeartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/heart/controller/HeartController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/heart/domain/Heart.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/heart/domain/PostHeart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/heart/dto/HeartDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/heart/dto/PostHeartDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/heart/repository/HeartRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/heart/service/HeartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/heart/service/HeartService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/oauth/controller/OAuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/oauth/controller/OAuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/oauth/dto/AuthTokenDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/oauth/dto/AuthTokenDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/post/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/post/controller/PostController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/post/dto/PostDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/post/dto/PostDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/post/service/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/post/service/PostService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/user/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/user/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/user/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/user/domain/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/user/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/user/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/global/config/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/global/config/CorsConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/global/utils/jwt/AuthTokensGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/global/utils/jwt/AuthTokensGenerator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +163,7 @@
       <workItem from="1693741196161" duration="15428000" />
       <workItem from="1693891211329" duration="17953000" />
       <workItem from="1693992666667" duration="9853000" />
-      <workItem from="1694010606474" duration="552000" />
+      <workItem from="1694010606474" duration="2487000" />
     </task>
     <task id="LOCAL-00001" summary="feat: 신고 엔티티 추가">
       <created>1692972982779</created>
@@ -292,7 +312,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693895764943</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Feat : 위치 위도/경도 리스트를 받고 반경 50m 반경 위치 리스트 반환&#10;&#10;- post로 List location을 받고 모든 위치의 반경 위치 리스트를 반환함. &#10;&#10;Related to : #15">
+      <created>1694011660703</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1694011660703</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -365,7 +392,8 @@
     <MESSAGE value="Fix : 회원가입 시 badge list 초기화하도록 수정  &#10;&#10;- OAuthService.newUser 에 초기화하는 함수 호출하도록 작성함.&#10;&#10;Related to : #15" />
     <MESSAGE value="Fix : 신고에 date 필드 추가 / 게시판 리스트에 badge count로직 추가  &#10;&#10;- declaration 엔티티에 baseTime 상속받음.&#10;- PostService에 post 할 때 badge count 로직 추가함.&#10;&#10;Related to : #15" />
     <MESSAGE value="Fix : 뱃지 index 0 에러 해결&#10;&#10;Related to : #15" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix : 뱃지 index 0 에러 해결&#10;&#10;Related to : #15" />
+    <MESSAGE value="Feat : 위치 위도/경도 리스트를 받고 반경 50m 반경 위치 리스트 반환&#10;&#10;- post로 List location을 받고 모든 위치의 반경 위치 리스트를 반환함. &#10;&#10;Related to : #15" />
+    <option name="LAST_COMMIT_MESSAGE" value="Feat : 위치 위도/경도 리스트를 받고 반경 50m 반경 위치 리스트 반환&#10;&#10;- post로 List location을 받고 모든 위치의 반경 위치 리스트를 반환함. &#10;&#10;Related to : #15" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

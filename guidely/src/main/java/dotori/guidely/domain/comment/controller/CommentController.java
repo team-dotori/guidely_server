@@ -5,7 +5,7 @@ import dotori.guidely.domain.comment.dto.CommentDto;
 import dotori.guidely.domain.comment.dto.request.CommentRequestDto;
 import dotori.guidely.domain.comment.dto.response.CommentResponseDto;
 import dotori.guidely.domain.comment.service.CommentService;
-import dotori.guidely.global.utils.jwt.AuthTokensGenerator;
+import dotori.guidely.domain.user.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -24,14 +24,14 @@ import java.util.List;
 public class CommentController {
 
     private final CommentService commentService;
-    private final AuthTokensGenerator authTokensGenerator;
+    private final UserService userService;
 
     @Operation(summary = "댓글 생성", description = "댓글을 생성하는 메서드")
     @PostMapping("/{postId}/comments")
     public ResponseEntity<CommentResponseDto> createComment(@RequestBody CommentRequestDto request,
                                                             @PathVariable Long postId,
                                                             @RequestHeader(value = "accessToken") String accessToken) {
-        Long userId = authTokensGenerator.extractUserId(accessToken);
+        Long userId = userService.findUserIdByAccessToken(accessToken);
 
         CommentDto commentDto;
         // 댓글 유형이 텍스트일 경우
@@ -47,6 +47,7 @@ public class CommentController {
                 .nickname(commentDto.getUser().getNickname())
                 .type(commentDto.getType())
                 .content(commentDto.getContent())
+                .createdDate(commentDto.getCreatedDate())
                 .build();
 
         return ResponseEntity

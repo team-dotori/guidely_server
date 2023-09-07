@@ -84,13 +84,6 @@ public class DeclarationService {
         return id;
     }
 
-    @Transactional
-    public long addLike(long id) {
-        Declaration declaration = declarationRepository.findById(id).orElseThrow(() -> new CustomException(ErrorCode.DECLARATION_NOT_FOUND));
-        declaration.addLike();
-        return id;
-    }
-
     public void checkCount(User user){
         CollectBadge collectBadge = new CollectBadge(user,5,user.getDeclarationList().size(),1);
         collectBadge.detectAndExecute();

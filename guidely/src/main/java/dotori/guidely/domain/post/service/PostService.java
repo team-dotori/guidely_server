@@ -95,6 +95,7 @@ public class PostService {
                     .type(post.getType())
                     .content(post.getContent())
                     .likeCount(post.getLikeCount())
+                    .createdDate(post.getCreatedDate())
                     .build();
 
         return response;
