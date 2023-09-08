@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2776cb80-a742-4097-a261-55818debcd46" name="Changes" comment="Feat : 위치 위도/경도 리스트를 받고 반경 50m 반경 위치 리스트 반환&#10;&#10;- post로 List location을 받고 모든 위치의 반경 위치 리스트를 반환함. &#10;&#10;Related to : #15">
+      <change afterPath="$PROJECT_DIR$/guidely/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/heart/domain/DeclarationHeart.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/heart/dto/CheckHeartDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/heart/dto/DeclarationHeartDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/heart/repository/DeclarationHeartRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/heart/repository/PostHeartRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/test/controller/TestApiController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/user/dto/UserTypeDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/badge/controller/BadgeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/badge/controller/BadgeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/comment/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/comment/controller/CommentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/comment/dto/CommentDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/comment/dto/CommentDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/comment/dto/response/CommentResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/comment/dto/response/CommentResponseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/comment/service/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/comment/service/CommentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/controller/DeclarationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/controller/DeclarationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/controller/LocationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/controller/LocationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/domain/Declaration.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/domain/Declaration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/service/DeclarationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/declaration/service/DeclarationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/heart/controller/HeartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/heart/controller/HeartController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/heart/domain/Heart.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/heart/domain/PostHeart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/heart/dto/HeartDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/heart/dto/PostHeartDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/heart/repository/HeartRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/heart/service/HeartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/heart/service/HeartService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/oauth/controller/OAuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/oauth/controller/OAuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/oauth/dto/AuthTokenDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/oauth/dto/AuthTokenDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/post/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/post/controller/PostController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/post/dto/PostDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/post/dto/PostDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/post/service/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/post/service/PostService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/user/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/user/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/user/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/user/domain/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/user/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/user/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/global/config/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/global/config/CorsConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/global/utils/jwt/AuthTokensGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/global/utils/jwt/AuthTokensGenerator.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$/guidely">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin Class" />
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="develop" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2UPz0kLWFVIXOYbcMLlymfpT1Py" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="compactDirectories" value="true" />
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showModules" value="false" />
+    <option name="showVisibilityIcons" value="true" />
+    <option name="sortByType" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/heeming/Desktop/도토리/guidely/src/main/java/dotori/guidely/domain/badge&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;ca96123b3e864369361dad67a0a28dca&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain/badge" />
+      <recent name="$PROJECT_DIR$/guidely/src/main/java/dotori/guidely/domain" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/guidely/src/main/resources" />
+      <recent name="$PROJECT_DIR$/guidely/src/main/resources/templates" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="dotori.guidely.domain.declaration.domain" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="도토리" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="도토리" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Unnamed" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <option name="ACTIVE_PROFILES" />
+      <option name="ALTERNATIVE_JRE_PATH" value="11" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <module name="dotori.guidely.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="dotori.guidely.GuidelyApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2776cb80-a742-4097-a261-55818debcd46" name="Changes" comment="" />
+      <created>1692855784151</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1692855784151</updated>
+      <workItem from="1692855787677" duration="733000" />
+      <workItem from="1692856544983" duration="2172000" />
+      <workItem from="1692925430668" duration="7973000" />
+      <workItem from="1692972939073" duration="718000" />
+      <workItem from="1693024887149" duration="14119000" />
+      <workItem from="1693041457199" duration="1512000" />
+      <workItem from="1693109525428" duration="12741000" />
+      <workItem from="1693203016668" duration="14265000" />
+      <workItem from="1693282791036" duration="4485000" />
+      <workItem from="1693287300941" duration="13795000" />
+      <workItem from="1693376695870" duration="23344000" />
+      <workItem from="1693566199618" duration="789000" />
+      <workItem from="1693646046434" duration="3706000" />
+      <workItem from="1693711495252" duration="21428000" />
+      <workItem from="1693741196161" duration="15428000" />
+      <workItem from="1693891211329" duration="17953000" />
+      <workItem from="1693992666667" duration="9853000" />
+      <workItem from="1694010606474" duration="2487000" />
+    </task>
+    <task id="LOCAL-00001" summary="feat: 신고 엔티티 추가">
+      <created>1692972982779</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1692972982779</updated>
+    </task>
+    <task id="LOCAL-00002" summary="feat: 신고 정보저장 기능 추가">
+      <created>1693039792126</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1693039792126</updated>
+    </task>
+    <task id="LOCAL-00003" summary="feat: 신고 정보 모두 가져오기 기능 추가">
+      <created>1693039905648</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1693039905648</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Feat: ExceptionHandler 기능 추가 &#10;&#10;기본적인 exception과 찾는 신고정보가 없을 때의 customexcepion 추가함.&#10;추가적인 customexception이 필요하다면 ErrorCode에 추가하면 됨.">
+      <created>1693114724414</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1693114724414</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Feat: 신고 정보 삭제하기, 수정하기 기능 추가">
+      <created>1693115850721</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1693115850721</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Comment : 신고 controller 필요한 주석 추가">
+      <created>1693194994036</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1693194994036</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Feat : Location Dto, Repository 추가&#10;&#10;디버그를 위한 저장된 Location 정보 가져오는 기능 추가">
+      <created>1693196240368</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1693196240368</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Fix : 신고 저장 시 같은 위치 중복 생성 수정 &#10;&#10;- 신고 저장할 때 항상 새로운 location을 할당 받아 저장하는 것을 위도/경도 기반으로 같은 위치가 없다면 새로 생성, 있다면 거기 신고 리스트에 신고 추가 (Optional 사용)&#10;- 신고의 location 넣는 함수 : setLocation &#10;- 위치의 declaration 리스트에 넣는 함수 : addDeclaration">
+      <created>1693202241733</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1693202241733</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Feat : locaion Id로 신고 List 반환하는 기능 추가&#10;&#10;- 장소 검색 후 해당 장소의 신고 리스트를 반환해줘야하기 때문이 해당 기능을 추가함.&#10;- ListDeclarationResponseDto 추가">
+      <created>1693205982691</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1693205982691</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Fix : LocationService에서 findByCoor함수명을 checkLocationIsExist로 수정&#10;&#10;- DeclarationService에서 새로 추가되는 신고의 위치가 Null인지 아닌지 확인해주는 함수기 때문에 수정함.">
+      <created>1693206748224</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1693206748224</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Feat : 도로명주소로 특정 Location 정보 가져오기 기능 추가">
+      <created>1693207679414</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1693207679414</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Feat : 현재 위치 기준(위도,경도) 반경 500m 신고 내역 가져오는 기능 추가&#10;&#10;- 쿼리문 : &quot;select loc from Location loc where ST_Distance_Sphere(POINT(:longitude,:latitude), POINT(loc.longitude,loc.latitude)) &lt;= 500&quot;&#10;- 반경 범위는 수정 가능&#10;- local mysql 추가">
+      <created>1693282695447</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1693282695447</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Feat : 현재 위치 기준(위도,경도) 반경 500m 신고 내역 가져오는 기능 추가&#10;&#10;- user not Found error code 추가&#10;- 신고 저장할 때 accessToken받아서 User 객체에 신고 내역 추가해줌.&#10;- User Service에 saveDeclaration 추가&#10;- User에 addDeclaration 추가 &#10;- Declaration객체에는 User 지정 안함. (신고 id로 user을 찾을 일이 없다고 판단)">
+      <created>1693286058778</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1693286058778</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Fix : user에서 신고내역 가져오기 수정&#10;&#10;- 임의로 userid로 test진행">
+      <created>1693295275839</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1693295275839</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Refactor : 필요없는 코드 삭제">
+      <created>1693296540235</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1693296540235</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Feat : building이름으로 신고리스트 찾아오는 기능 추가&#10;&#10;- 장애인용에서 신고 내역 찾기 기능 중 필요한 기능이라 판단하여 추가">
+      <created>1693376665415</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1693376665415</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Fix : location ID로 신고 리스트 조회 시 신고 ID도 같이 반환되도록 수정&#10;&#10;- ListDeclarationResponseDto에서 id 필드 추가 및 생성자 추가 &#10;- +) 주석 처리한 거 제거&#10;&#10;Related to : #15">
+      <created>1693648359079</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1693648359079</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Fix : userId 접근 -&gt; accessToken 접근으로 수정&#10;&#10;- 각 controller 단에서 유저 Id가 필요한 함수를 모두 header accessToken으로 수정&#10;&#10;Related to : #15">
+      <created>1693741175549</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1693741175549</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Fix : 회원가입 시 badge list 초기화하도록 수정  &#10;&#10;- OAuthService.newUser 에 초기화하는 함수 호출하도록 작성함.&#10;&#10;Related to : #15">
+      <created>1693742874837</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1693742874837</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Fix : 신고에 date 필드 추가 / 게시판 리스트에 badge count로직 추가  &#10;&#10;- declaration 엔티티에 baseTime 상속받음.&#10;- PostService에 post 할 때 badge count 로직 추가함.&#10;&#10;Related to : #15">
+      <created>1693744549476</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1693744549476</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Fix : 뱃지 index 0 에러 해결&#10;&#10;Related to : #15">
+      <created>1693895764943</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1693895764943</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Feat : 위치 위도/경도 리스트를 받고 반경 50m 반경 위치 리스트 반환&#10;&#10;- post로 List location을 받고 모든 위치의 반경 위치 리스트를 반환함. &#10;&#10;Related to : #15">
+      <created>1694011660703</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1694011660703</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="feature/#15" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/feature/#8" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="feature/#8" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat: 신고 엔티티 추가" />
+    <MESSAGE value="feat: 신고 정보저장 기능 추가" />
+    <MESSAGE value="feat: 신고 정보 모두 가져오기 기능 추가" />
+    <MESSAGE value="Feat: ExceptionHandler 기능 추가 &#10;&#10;기본적인 exception과 찾는 신고정보가 없을 때의 customexcepion 추가함.&#10;추가적인 customexception이 필요하다면 ErrorCode에 추가하면 됨." />
+    <MESSAGE value="Feat: 신고 정보 삭제하기, 수정하기 기능 추가" />
+    <MESSAGE value="Comment : 신고 controller 필요한 주석 추가" />
+    <MESSAGE value="Feat : Location Dto, Repository 추가&#10;&#10;디버그를 위한 저장된 Location 정보 가져오는 기능 추가" />
+    <MESSAGE value="Fix : 신고 저장 시 같은 위치 중복 생성 수정 &#10;&#10;- 신고 저장할 때 항상 새로운 location을 할당 받아 저장하는 것을 위도/경도 기반으로 같은 위치가 없다면 새로 생성, 있다면 거기 신고 리스트에 신고 추가&#10;- 신고의 location 넣는 함수 : setLocation &#10;- 위치의 declaration 리스트에 넣는 함수 : addDeclaration" />
+    <MESSAGE value="Fix : 신고 저장 시 같은 위치 중복 생성 수정 &#10;&#10;- 신고 저장할 때 항상 새로운 location을 할당 받아 저장하는 것을 위도/경도 기반으로 같은 위치가 없다면 새로 생성, 있다면 거기 신고 리스트에 신고 추가 (Optional 사용)&#10;- 신고의 location 넣는 함수 : setLocation &#10;- 위치의 declaration 리스트에 넣는 함수 : addDeclaration" />
+    <MESSAGE value="Feat : locaion Id로 신고 List 반환하는 기능 추가&#10;&#10;- 장소 검색 후 해당 장소의 신고 리스트를 반환해줘야하기 때문이 해당 기능을 추가함.&#10;- ListDeclarationResponseDto 추가" />
+    <MESSAGE value="Fix : LocationService에서 findByCoor함수명을 checkLocationIsExist로 수정&#10;&#10;- DeclarationService에서 새로 추가되는 신고의 위치가 Null인지 아닌지 확인해주는 함수기 때문에 수정함." />
+    <MESSAGE value="Feat : 도로명주소로 특정 Location 정보 가져오기 기능 추가" />
+    <MESSAGE value="Feat : 현재 위치 기준(위도,경도) 반경 500m 신고 내역 가져오는 기능 추가&#10;&#10;- 쿼리문 : &quot;select loc from Location loc where ST_Distance_Sphere(POINT(:longitude,:latitude), POINT(loc.longitude,loc.latitude)) &lt;= 500&quot;&#10;- 반경 범위는 수정 가능" />
+    <MESSAGE value="Feat : 현재 위치 기준(위도,경도) 반경 500m 신고 내역 가져오는 기능 추가&#10;&#10;- 쿼리문 : &quot;select loc from Location loc where ST_Distance_Sphere(POINT(:longitude,:latitude), POINT(loc.longitude,loc.latitude)) &lt;= 500&quot;&#10;- 반경 범위는 수정 가능&#10;- local mysql 추가" />
+    <MESSAGE value="Feat : 현재 위치 기준(위도,경도) 반경 500m 신고 내역 가져오는 기능 추가&#10;&#10;- user not Found error code 추가&#10;- 신고 저장할 때 accessToken받아서 User 객체에 신고 내역 추가해줌.&#10;- User Service에 saveDeclaration 추가&#10;- User에 addDeclaration 추가 &#10;- Declaration객체에는 User 지정 안함. (신고 id로 user을 찾을 일이 없다고 판단)" />
+    <MESSAGE value="Fix : user에서 신고내역 가져오기 수정&#10;&#10;- 임의로 userid로 test진행" />
+    <MESSAGE value="Refactor : 필요없는 코드 삭제" />
+    <MESSAGE value="Feat : building이름으로 신고리스트 찾아오는 기능 추가&#10;&#10;- 장애인용에서 신고 내역 찾기 기능 중 필요한 기능이라 판단하여 추가" />
+    <MESSAGE value="Fix : location ID로 신고 리스트 조회 시 신고 ID도 같이 반환되도록 수정&#10;&#10;- ListDeclarationResponseDto에서 id 필드 추가 및 생성자 추가 &#10;- +) 주석 처리한 거 제거&#10;&#10;Related to : #15" />
+    <MESSAGE value="Fix : userId 접근 -&gt; accessToken 접근으로 수정&#10;&#10;- 각 controller 단에서 유저 Id가 필요한 함수를 모두 header accessToken으로 수정&#10;&#10;Related to : #15" />
+    <MESSAGE value="Fix : 회원가입 시 badge list 초기화하도록 수정  &#10;&#10;- OAuthService.newUser 에 초기화하는 함수 호출하도록 작성함.&#10;&#10;Related to : #15" />
+    <MESSAGE value="Fix : 신고에 date 필드 추가 / 게시판 리스트에 badge count로직 추가  &#10;&#10;- declaration 엔티티에 baseTime 상속받음.&#10;- PostService에 post 할 때 badge count 로직 추가함.&#10;&#10;Related to : #15" />
+    <MESSAGE value="Fix : 뱃지 index 0 에러 해결&#10;&#10;Related to : #15" />
+    <MESSAGE value="Feat : 위치 위도/경도 리스트를 받고 반경 50m 반경 위치 리스트 반환&#10;&#10;- post로 List location을 받고 모든 위치의 반경 위치 리스트를 반환함. &#10;&#10;Related to : #15" />
+    <option name="LAST_COMMIT_MESSAGE" value="Feat : 위치 위도/경도 리스트를 받고 반경 50m 반경 위치 리스트 반환&#10;&#10;- post로 List location을 받고 모든 위치의 반경 위치 리스트를 반환함. &#10;&#10;Related to : #15" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
